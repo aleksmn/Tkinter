@@ -24,6 +24,15 @@ root.geometry('650x700')
 root.config(bg='#10A19D')
 
 
+#Создаем второе окно
+
+top = tk.Toplevel()
+
+top.config(bg='#540375')
+
+top.geometry('200x200-0+50')
+
+
 #  Запускаем основной цикл программы
 root.mainloop()
 

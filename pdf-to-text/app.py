@@ -35,7 +35,8 @@ instructons.grid(columnspan=3, column=0, row=1)
 def open_file():
     # print("Открытие файла")
     browse_text.set("Загрузка...")
-    file = askopenfile(parent=root, mode='rb', title="Выбери файл. Уу-ху!", filetypes=[("Pdf file", "*.pdf")])
+    file = askopenfile(parent=root, mode='rb',
+                       title="Выбери файл. Уу-ху!", filetypes=[("Pdf file", "*.pdf")])
     if file:
         # print("Файл загружен!")
         read_pdf = PyPDF2.PdfFileReader(file)
@@ -50,7 +51,14 @@ def open_file():
 
 # Кнопка Обзор
 browse_text = tk.StringVar()
-browse_btn = tk.Button(root, textvariable=browse_text, command=lambda:open_file(), font="Arial", bg="#20bebe", fg="white", height=2, width=15)
+browse_btn = tk.Button(root, textvariable=browse_text,
+                       command=lambda: open_file(),
+                       font="Arial",
+                       bg="#20bebe",
+                       fg="white",
+                       height=2,
+                       width=15)
+                       
 browse_text.set("Обзор")
 browse_btn.grid(column=1, row=2)
 

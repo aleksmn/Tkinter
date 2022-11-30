@@ -17,7 +17,7 @@ https://www.webucator.com/article/python-color-constants-module/
 
 ## Create a virtual env 
 
-python -m venv ./venv
+python3 -m venv ./venv
 
 
 ## “Freezing” Environment

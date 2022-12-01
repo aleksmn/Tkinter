@@ -1,38 +1,55 @@
 import tkinter as tk
 import os
 
-print("Рабочая директория", os.getcwd())
-
 # Определяем окно программы
 root = tk.Tk()
-
-# Стилизация
-
-root.title("Основы работы с Tkinter!")
-
-# Добавляем логотип на заголовок окна
+root.title("Первые виджеты!")
 root.iconphoto(True, tk.PhotoImage(file='logo.png'))
-
-# Другой способ добавления логотипа:
-# root.iconbitmap('logo.ico')
-
-root.geometry('650x700')
-
-# root.resizable(0,0)
-
-# Изменяем цвет фона (htps://colorhunt.co)
+root.geometry('600x600')
+root.resizable(0, 0)
 root.config(bg='#10A19D')
 
+# Создаем виджеты
 
-#Создаем второе окно
 
-top = tk.Toplevel()
+name_label = tk.Label(root, text='Привет, меня зовут Михаил!')
 
-top.config(bg='#540375')
+# Смотрим помощь по этому виджету:
+# print(help(name_label))
 
-top.geometry('200x200-0+50')
+# Помещаем виджет в окно
+name_label.pack()
+
+# Виджет 2
+
+welcome_label = tk.Label(root, text='Добро пожаловать в мое приложение!')
+welcome_label.config(font=('Arial', 14, 'bold'), fg='white', bg='#10A19D')
+
+welcome_label.pack(pady=20)
+
+
+# Виджет 3
+
+text_label = tk.Label(root, text='Это мое первое приложение на Tkinter')
+text_label.config(font=('Arial', 12, 'bold'), fg='white', bg='#10A19D')
+
+text_label.pack(pady=(0, 10))
+
+
+# Виджет 4
+
+text_label = tk.Label(root, text='Здесь я добавил первые виджеты')
+text_label.config(font=('Arial', 12, 'bold'), fg='magenta', bg='white')
+
+text_label.pack(pady=(0, 20), ipadx=20, ipady=10, anchor='w')
+
+
+# Виджет 5
+
+text_label_2 = tk.Label(root, text='и научился добавлять внутренние и внешние отступы')
+text_label_2.config(font=('Arial', 12, 'bold'), fg='slateblue', bg='white')
+text_label_2.pack(pady=(0, 20), ipadx=20, ipady=10, fill='x')
 
 
 #  Запускаем основной цикл программы
 root.mainloop()
-

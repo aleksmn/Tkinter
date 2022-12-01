@@ -1,4 +1,4 @@
-# Buttons and Grid
+# Frames
 
 import tkinter as tk
 import os
@@ -9,50 +9,56 @@ root.title("Работа с кнопками")
 root.iconphoto(True, tk.PhotoImage(file='logo.png'))
 root.geometry('600x600')
 root.resizable(0, 0)
-root.config(bg='#10A19D')
-
-# Создаем разметку и кнопки
-
-# Button 1
-name_button = tk.Button(root, text='Name')
-name_button.grid(row=0, column=0, padx=20, pady=20)
-
-# Button 2
-time_button = tk.Button(root, text='Time', bg='lightblue',
-                        activebackground='orange')
-time_button.grid(row=1, column=1, padx=(0, 20), pady=(0, 20))
-
-# Button 3
-date_button = tk.Button(root, text='Date', bg='lightblue',
-                        activebackground='orange')
-date_button.grid(row=3, column=2, padx=(0, 20), pady=(0, 20), ipadx=30)
-
-# Button 4
-place_button = tk.Button(root, text='Place', bg='coral1',
-                         activebackground='cornflowerblue',
-                         borderwidth=3)
-place_button.grid(row=4, column=0,
-                  columnspan=3,
-                  sticky='we',
-                  padx=20, pady=(0, 20), ipadx=20)
+root.config(bg='azure2')
 
 
-# TEST BUTTONS
+# Пример, зачем нужны фреймы
 
-test_1 = tk.Button(root, text='Test')
-test_2 = tk.Button(root, text='Test')
-test_3 = tk.Button(root, text='Test')
-test_4 = tk.Button(root, text='Test')
-test_5 = tk.Button(root, text='Test')
-test_6 = tk.Button(root, text='Test')
-
-test_1.grid(row=5, column=0, padx=5, pady=5, sticky='e')
-test_2.grid(row=5, column=1, padx=5, pady=5)
-test_3.grid(row=5, column=2, padx=5, pady=5, sticky='w')
-test_4.grid(row=6, column=0, padx=5, pady=5, sticky='e')
-test_5.grid(row=6, column=1, padx=5, pady=5)
-test_6.grid(row=6, column=2, padx=5, pady=5, sticky='w')
+# name_label = tk.Label(root, text='Enter your name')
+# name_label.pack()
+# name_button = tk.Button(root, text='Submit your name')
+# name_button.grid(row=0, column=1)
 
 
-#  Запускаем основной цикл программы
+# Создаем фреймы
+
+pack_frame = tk.Frame(root, bg='cyan1')
+grid_frame_1 = tk.Frame(root, bg='darkolivegreen1')
+grid_frame_2 = tk.LabelFrame(
+    root, text="This is Grid Frame!", bg=root['bg'], borderwidth=3)
+
+pack_frame.pack(fill='both', expand=True)
+grid_frame_1.pack(fill='both', expand=True)
+grid_frame_2.pack(fill='both', expand=True, padx=10, pady=10)
+
+# Pack Frame
+
+pack_frame.config(padx=10, pady=10)
+
+tk.Label(pack_frame, text="Hello World!").pack()
+tk.Label(pack_frame, text="Hello World!").pack()
+tk.Label(pack_frame, text="Hello World!").pack()
+
+
+# Grid Frame
+
+grid_frame_1.config(padx=10, pady=10)
+
+tk.Label(grid_frame_1,
+         text="Hello World!",
+         bg=grid_frame_1['bg'],
+         pady=10).grid(row=0, column=0)
+tk.Label(grid_frame_1,
+         text="Hello World!",
+         bg=grid_frame_1['bg'],
+         pady=10).grid(row=1, column=1)
+tk.Label(grid_frame_1,
+         text="Hello World!",
+         bg=grid_frame_1['bg'],
+         pady=10).grid(row=2, column=2)
+
+
+
+
+# Запускаем основной цикл программы
 root.mainloop()

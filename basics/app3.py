@@ -1,11 +1,10 @@
 # Frames
 
 import tkinter as tk
-import os
 
 # Создаем окно программы
 root = tk.Tk()
-root.title("Работа с кнопками")
+root.title("Создаем фреймы")
 root.iconphoto(True, tk.PhotoImage(file='logo.png'))
 root.geometry('600x600')
 root.resizable(0, 0)

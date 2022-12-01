@@ -1,7 +1,7 @@
 # Buttons and Grid
 
 import tkinter as tk
-import os
+
 
 # Создаем окно программы
 root = tk.Tk()

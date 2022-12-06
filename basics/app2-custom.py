@@ -32,6 +32,7 @@ def button_function():
 
 # # Button 1
 name_button = ctk.CTkButton(root, text='Name', command=button_function)
+name_button.configure(fg_color="purple", text_color="white")
 name_button.grid(row=0, column=0, padx=20, pady=20)
 
 # # Button 2

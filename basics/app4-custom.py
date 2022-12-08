@@ -23,11 +23,14 @@ def make_label():
         return
 
     text = ctk.CTkLabel(output_frame, text=user_input)
-    text.configure(text_color='black')
+    text.configure(text_color='black', font=('serif', 18))
 
     text.pack()
 
     text_entry.delete(0, 'end')
+
+
+
 
 
 def count_up(number):

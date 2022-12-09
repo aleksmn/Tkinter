@@ -8,9 +8,11 @@ ctk.set_appearance_mode("dark")
 # Themes: "blue" (standard), "green", "dark-blue"
 ctk.set_default_color_theme("dark-blue")
 
+filepath = None
 
 def open_file():
     '''Открываем файл для редактирования'''
+    global filepath
 
     filepath = askopenfilename(
         filetypes=[("Текстовые файлы", "*.txt"), ("Все файлы", "*.*")]
@@ -27,6 +29,7 @@ def open_file():
 
 def save_file():
     '''Сохраняем текущий файл как новый файл.'''
+    global filepath
 
     if filepath is None:
         filepath = asksaveasfilename(
@@ -53,7 +56,7 @@ fr_buttons = ctk.CTkFrame(root)
 
 btn_open = ctk.CTkButton(fr_buttons, text="Открыть", command=open_file)
 btn_save = ctk.CTkButton(
-    fr_buttons, text="Сохранить как...", command=save_file)
+    fr_buttons, text="Сохранить", command=save_file)
 
 btn_open.grid(row=0, column=0, sticky="ew", padx=10, pady=10)
 btn_save.grid(row=1, column=0, sticky="ew", padx=10)

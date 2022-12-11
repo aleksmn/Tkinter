@@ -1,6 +1,7 @@
 import tkinter as tk
 import os
 
+
 print("Рабочая директория", os.getcwd())
 
 # Определяем окно программы
@@ -21,16 +22,25 @@ root.geometry('650x700')
 # root.resizable(0,0)
 
 # Изменяем цвет фона (htps://colorhunt.co)
-root.config(bg='#10A19D')
+root.configure(bg='#10A19D')
+
+
+
 
 
 #Создаем второе окно
 
 top = tk.Toplevel()
 
-top.config(bg='#540375')
+top.configure(bg='#540375')
 
-top.geometry('200x200-0+50')
+top.geometry('200x200-0+0')
+
+
+
+
+
+
 
 
 #  Запускаем основной цикл программы

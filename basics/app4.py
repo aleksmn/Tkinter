@@ -49,7 +49,7 @@ output_frame.pack(padx=10, pady=(0, 10))
 
 # Inputs
 
-text_entry = tk.Entry(input_frame, width=40)
+text_entry = tk.Entry(input_frame, width=35)
 text_entry.grid(row=0, column=0, padx=10, pady=5, ipady=4)
 input_frame.grid_propagate(0)
 

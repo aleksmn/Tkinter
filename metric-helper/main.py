@@ -1,7 +1,6 @@
 # Metric Helper
 import tkinter as tk
 import customtkinter as ctk
-from tkinter import ttk
 
 
 ctk.set_appearance_mode("light")
@@ -13,10 +12,12 @@ root.iconphoto(True, tk.PhotoImage(file='logo.png'))
 root.resizable(0, 0)
 
 # Определяем цвета и шрифт
-field_font = ('Arial', 14)
+field_font = ('sans-serif', 14)
 
 primary_color = "purple"
 secondary_color = "slateblue"
+
+
 
 
 # Функции
@@ -66,11 +67,10 @@ def convert():
 input_field = ctk.CTkEntry(
     root, width=190, font=field_font, placeholder_text="Enter value",)
 output_field = ctk.CTkEntry(root, width=190, font=field_font)
-equal_label = ctk.CTkLabel(root, text="=>", font=field_font)
+equal_label = ctk.CTkLabel(root, text="⇒", font=field_font)
 input_field.grid(row=0, column=0, padx=10, pady=10)
 equal_label.grid(row=0, column=1, padx=10, pady=10)
 output_field.grid(row=0, column=2, padx=10, pady=10)
-
 
 # Комбобокс
 metric_list = ['femto', 'pico', 'nano', 'micro', 'milli', 'centi', 'deci',
@@ -92,6 +92,8 @@ output_combobox.set('base value')
 convert_button = ctk.CTkButton(root, text='Convert', font=field_font, fg_color=primary_color, hover_color=secondary_color,
                                command=convert)
 convert_button.grid(row=2, column=0, columnspan=3, padx=10, pady=10, ipadx=50)
+
+
 
 # Запуск основного цикла
 root.mainloop()

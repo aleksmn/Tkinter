@@ -1,26 +1,20 @@
 # Metric Helper
-import tkinter as tk
-import customtkinter as ctk
+import tkinter
 from tkinter import ttk
 
-
-ctk.set_appearance_mode("light")
-
 # Создаем окно
-root = ctk.CTk()
+root = tkinter.Tk()
 root.title('Metric Helper')
-root.iconphoto(True, tk.PhotoImage(file='logo.png'))
+root.iconphoto(True, tkinter.PhotoImage(file='logo.png'))
 root.resizable(0, 0)
 
 # Определяем цвета и шрифт
-field_font = ('Arial', 14)
-
-primary_color = "purple"
-secondary_color = "slateblue"
-
+field_font = ('Cambria', 10)
+bg_color = "#c75c5c"
+button_color = "#f5cf87"
+root.config(bg=bg_color)
 
 # Функции
-
 
 def convert():
     """Переводим одну величину в другую"""
@@ -63,24 +57,21 @@ def convert():
 # Определяем разметку окна
 
 # Создаем поля ввода и вывода
-input_field = ctk.CTkEntry(
-    root, width=190, font=field_font, placeholder_text="Enter value",)
-output_field = ctk.CTkEntry(root, width=190, font=field_font)
-equal_label = ctk.CTkLabel(root, text="=>", font=field_font)
+input_field = tkinter.Entry(root, width=20, font=field_font, borderwidth=3)
+output_field = tkinter.Entry(root, width=20, font=field_font, borderwidth=3)
+equal_label = tkinter.Label(root, text="=>", font=field_font, bg=bg_color)
 input_field.grid(row=0, column=0, padx=10, pady=10)
 equal_label.grid(row=0, column=1, padx=10, pady=10)
 output_field.grid(row=0, column=2, padx=10, pady=10)
-
+# input_field.insert(0, 'Enter your quantity')
 
 # Комбобокс
 metric_list = ['femto', 'pico', 'nano', 'micro', 'milli', 'centi', 'deci',
                'base value', 'deca', 'hecto', 'kilo', 'mega', 'giga', 'tera', 'peta']
-input_combobox = ctk.CTkComboBox(
-    root, width=190, values=metric_list, font=field_font, justify='center', button_color=secondary_color)
-output_combobox = ctk.CTkComboBox(
-    root, width=190, values=metric_list, font=field_font, justify='center', button_color=secondary_color)
+input_combobox = ttk.Combobox(root, value=metric_list, font=field_font, justify='center')
+output_combobox = ttk.Combobox(root, value=metric_list, font=field_font, justify='center')
 
-to_label = ctk.CTkLabel(root, text="to", font=field_font)
+to_label = tkinter.Label(root, text="to", font=field_font, bg=bg_color)
 input_combobox.grid(row=1, column=0, padx=10, pady=10)
 to_label.grid(row=1, column=1, padx=10, pady=10)
 output_combobox.grid(row=1, column=2, padx=10, pady=10)
@@ -89,8 +80,8 @@ input_combobox.set('base value')
 output_combobox.set('base value')
 
 # Кнопка перевода величин
-convert_button = ctk.CTkButton(root, text='Convert', font=field_font, fg_color=primary_color, hover_color=secondary_color,
-                               command=convert)
+convert_button = tkinter.Button(root, text='Convert', font=field_font, bg=button_color,
+                                command=convert)
 convert_button.grid(row=2, column=0, columnspan=3, padx=10, pady=10, ipadx=50)
 
 # Запуск основного цикла

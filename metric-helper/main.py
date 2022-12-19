@@ -18,10 +18,7 @@ primary_color = "purple"
 secondary_color = "slateblue"
 
 
-
-
 # Функции
-
 
 def convert():
     """Переводим одну величину в другую"""
@@ -64,26 +61,41 @@ def convert():
 # Определяем разметку окна
 
 # Создаем поля ввода и вывода
+
 input_field = ctk.CTkEntry(
-    root, width=190, font=field_font, placeholder_text="Enter value",)
+    root, width=190, font=field_font, placeholder_text="Enter value")
+
 output_field = ctk.CTkEntry(root, width=190, font=field_font)
-equal_label = ctk.CTkLabel(root, text="⇒", font=field_font)
+
+equal_label = ctk.CTkLabel(root, text="=", font=field_font)
+
+
 input_field.grid(row=0, column=0, padx=10, pady=10)
 equal_label.grid(row=0, column=1, padx=10, pady=10)
 output_field.grid(row=0, column=2, padx=10, pady=10)
 
+
 # Комбобокс
 metric_list = ['femto', 'pico', 'nano', 'micro', 'milli', 'centi', 'deci',
                'base value', 'deca', 'hecto', 'kilo', 'mega', 'giga', 'tera', 'peta']
+
+
 input_combobox = ctk.CTkComboBox(
-    root, width=190, values=metric_list, font=field_font, justify='center', button_color=secondary_color)
+    root, width=190, values=metric_list, font=field_font, justify='left', button_color=secondary_color)
+
+
+
 output_combobox = ctk.CTkComboBox(
-    root, width=190, values=metric_list, font=field_font, justify='center', button_color=secondary_color)
+    root, width=190, values=metric_list, font=field_font, justify='left', button_color=secondary_color)
+
 
 to_label = ctk.CTkLabel(root, text="to", font=field_font)
+
+
 input_combobox.grid(row=1, column=0, padx=10, pady=10)
 to_label.grid(row=1, column=1, padx=10, pady=10)
 output_combobox.grid(row=1, column=2, padx=10, pady=10)
+
 
 input_combobox.set('base value')
 output_combobox.set('base value')
@@ -92,7 +104,6 @@ output_combobox.set('base value')
 convert_button = ctk.CTkButton(root, text='Convert', font=field_font, fg_color=primary_color, hover_color=secondary_color,
                                command=convert)
 convert_button.grid(row=2, column=0, columnspan=3, padx=10, pady=10, ipadx=50)
-
 
 
 # Запуск основного цикла

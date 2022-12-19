@@ -25,21 +25,31 @@ def open_file():
     root.title(f"Простой текстовый редактор - {filepath}")
 
 
+
+
+
 def save_file():
     '''Сохраняем текущий файл как новый файл.'''
 
-    if filepath is None:
-        filepath = asksaveasfilename(
-            defaultextension=".txt",
-            filetypes=[("Текстовые файлы", "*.txt"), ("Все файлы", "*.*")],
-        )
-        if not filepath:
-            return
+    filepath = asksaveasfilename(
+        defaultextension=".txt",
+        filetypes=[("Text files", "*.txt"), ("Python", "*.py"), ("All files", "*.*")],
+    )
+
+    if not filepath:
+        return
 
     with open(filepath, "w", encoding='utf-8') as output_file:
         text = txt_edit.get("0.0", tk.END)
         output_file.write(text)
+
     root.title(f"Простой текстовый редактор - {filepath}")
+
+
+
+
+
+
 
 
 root = ctk.CTk()
@@ -60,7 +70,6 @@ btn_save.grid(row=1, column=0, sticky="ew", padx=10)
 
 fr_buttons.grid(row=0, column=0, sticky="ns", padx=20, pady=20)
 txt_edit.grid(row=0, column=1, sticky="nsew", padx=(0, 20), pady=20)
-
 
 
 root.mainloop()

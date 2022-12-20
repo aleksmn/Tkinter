@@ -22,6 +22,9 @@ secondary_color = "slateblue"
 
 def convert():
     """Переводим одну величину в другую"""
+
+    print('Конвертируем')
+
     metric_values = {
         'femto': 10**-15,
         'pico': 10**-12,
@@ -101,8 +104,14 @@ input_combobox.set('base value')
 output_combobox.set('base value')
 
 # Кнопка перевода величин
-convert_button = ctk.CTkButton(root, text='Convert', font=field_font, fg_color=primary_color, hover_color=secondary_color,
-                               command=convert)
+convert_button = ctk.CTkButton(root, 
+                                text='Convert', 
+                                font=field_font, 
+                                fg_color=primary_color, 
+                                hover_color=secondary_color,
+                                command=convert)
+
+
 convert_button.grid(row=2, column=0, columnspan=3, padx=10, pady=10, ipadx=50)
 
 

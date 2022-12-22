@@ -47,18 +47,30 @@ def convert():
     output_field.delete(0, 'end')
 
     # Получаем информацию от пользователя
-    start_value = float(input_field.get())
+
+    try:
+        start_value = float(input_field.get())
+    
+    except:
+        print('Неверный ввод')
+        return
+
     start_prefix = input_combobox.get()
     end_prefix = output_combobox.get()
 
+    print(start_value, start_prefix, end_prefix)
+
+
     # Переводим в основную величину, без префикса (граммы, метры)
-    base_value = start_value*metric_values[start_prefix]
+    base_value = start_value * metric_values[start_prefix]
 
     # Переводим в новую величину
-    end_value = base_value/metric_values[end_prefix]
+    end_value = base_value / metric_values[end_prefix]
 
     # Обновляем вывод
     output_field.insert(0, str(end_value))
+
+
 
 
 # Определяем разметку окна
@@ -102,6 +114,8 @@ output_combobox.grid(row=1, column=2, padx=10, pady=10)
 
 input_combobox.set('base value')
 output_combobox.set('base value')
+
+
 
 # Кнопка перевода величин
 convert_button = ctk.CTkButton(root, 

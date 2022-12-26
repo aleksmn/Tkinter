@@ -1,4 +1,4 @@
-'''Simple Text Editor'''
+'''Check List'''
 import tkinter as tk
 import customtkinter as ctk
 
@@ -18,7 +18,6 @@ secondary_color = 'orange'
 root = ctk.CTk()
 root.title("Check List")
 root.iconphoto(True, tk.PhotoImage(file='logo.png'))
-# root.geometry('500x500')
 root.configure(padx=20)
 
 
@@ -27,18 +26,17 @@ root.configure(padx=20)
 def add_item():
     '''Добавляем строку в список'''
     my_listbox.insert('end', list_entry.get())
-    list_entry.delete(0, tk.END)
+    list_entry.delete(0, 'end')
 
 
 def remove_item():
     """Удаляем строку из списка"""
-    my_listbox.delete(tk.ANCHOR)
+    my_listbox.delete('anchor')
 
 
 def clear_list():
     """Удаляем все из списка"""
     my_listbox.delete(0, tk.END)
-
 
 def save_list():
     """Сохраняем список в текстовый файл"""
@@ -52,7 +50,6 @@ def save_list():
             else:
                 f.write(item + '\n')
 
-
 def open_list():
     """Открываем список из файла, если он есть"""
     try:
@@ -62,13 +59,13 @@ def open_list():
     except:
         return
 
+
+
 # Grid layout
 
-
 # Columns
+# 4 колонки с одинаковым весом - 1
 root.grid_columnconfigure((0, 1, 2, 3), weight=1)
-
-# Rows
 
 
 # Widgets
@@ -79,8 +76,12 @@ list_add_button = ctk.CTkButton(
 
 list_entry.grid(row=0, column=0, columnspan=3,
                 pady=20, padx=(0, 20), sticky='we')
+
 list_add_button.grid(row=0, column=3)
 
+
+
+# LISTBOX
 
 my_listbox = tk.Listbox(root, borderwidth=0, height=14, bg=root['bg'])
 my_listbox.grid(row=1, column=0, columnspan=4, sticky='nsew')
@@ -92,9 +93,10 @@ my_scrollbar.grid(row=1, column=3, sticky='nse')
 my_listbox.configure(yscrollcommand=my_scrollbar.set)
 
 
+
+
 # Buttons
-list_remove_button = ctk.CTkButton(
-    root, text='Remove Item', command=remove_item)
+list_remove_button = ctk.CTkButton(root, text='Remove Item', command=remove_item)
 list_clear_button = ctk.CTkButton(root, text='Clear List', command=clear_list)
 save_button = ctk.CTkButton(root, text='Save List', command=save_list)
 quit_button = ctk.CTkButton(root, text='Quit', command=root.destroy)
@@ -104,6 +106,22 @@ list_remove_button.grid(row=2, column=0, pady=20)
 list_clear_button.grid(row=2, column=1, padx=(20, 0))
 save_button.grid(row=2, column=2, padx=(20, 0))
 quit_button.grid(row=2, column=3, padx=(20, 0))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Open List if available
 open_list()

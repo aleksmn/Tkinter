@@ -15,6 +15,7 @@ root.resizable(0, 0)
 primary_color = "orange"
 secondary_color = "lightblue"
 
+my_font = ('monospace', 14)
 
 
 # Functions

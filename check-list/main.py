@@ -43,7 +43,9 @@ def save_list():
     """Сохраняем список в текстовый файл"""
     with open('checklist.txt', 'w', encoding='utf-8') as f:
         # listbox.get() возвращает кортеж (tuple)
-        list_tuple = my_listbox.get(0, tk.END)
+        
+        list_tuple = my_listbox.get(0, 'end')
+
         for item in list_tuple:
             # Добавляем перенос на новую строку
             if item.endswith('\n'):
@@ -52,14 +54,18 @@ def save_list():
                 f.write(item + '\n')
 
 
+
+
 def open_list():
     """Открываем список из файла, если он есть"""
     try:
         with open('checklist.txt', 'r') as f:
             for line in f:
-                my_listbox.insert(tk.END, line)
+                my_listbox.insert('end', line)
     except:
         return
+
+
 
 
 # Grid layout

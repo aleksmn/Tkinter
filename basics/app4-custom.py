@@ -9,7 +9,13 @@ root.title("Функции")
 root.iconphoto(True, tk.PhotoImage(file='logo.png'))
 root.geometry('500x500')
 root.resizable(0, 0)
-# root.config(bg='#10A19D')
+
+# Определяем цвета
+
+primary_color = "orange"
+secondary_color = "lightblue"
+
+
 
 # Functions
 
@@ -31,8 +37,6 @@ def make_label():
 
 
 
-
-
 def count_up(number):
     '''Count up on the app'''
     global value
@@ -45,8 +49,8 @@ def count_up(number):
 
 
 # Фреймы
-input_frame = ctk.CTkFrame(root, fg_color='orange', width=500, height=100)
-output_frame = ctk.CTkFrame(root, fg_color='lightblue', width=500, height=400)
+input_frame = ctk.CTkFrame(root, fg_color=primary_color, width=500, height=100)
+output_frame = ctk.CTkFrame(root, fg_color=secondary_color, width=500, height=400)
 
 input_frame.pack(padx=10, pady=10)
 output_frame.pack(padx=10, pady=(0, 10))
@@ -68,7 +72,7 @@ print_button.grid(row=0, column=1, padx=(0,10), ipadx=30, pady=10)
 output_frame.pack_propagate(0)
 
 
-# Pass a parameter
+# Передаем параметр
 
 value = 0
 count_button = ctk.CTkButton(input_frame, text='Count', command=lambda:count_up(value))

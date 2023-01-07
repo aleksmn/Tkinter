@@ -48,6 +48,10 @@ def open_file():
         text_box.insert(1.0, page_content)
         text_box.grid(column=1, row=3)
 
+        # Запись в файл
+        with open('output.txt', 'w', encoding='utf-8') as f:
+            f.write(page_content)
+
 
 # Кнопка Обзор
 browse_text = tk.StringVar()

@@ -1,41 +1,40 @@
-# Functions
-
 import tkinter as tk
 import customtkinter as ctk
+
+# Modes: "System" (standard), "Dark", "Light"
+ctk.set_appearance_mode("dark")
+# Themes: "blue" (standard), "green", "dark-blue"
+ctk.set_default_color_theme("blue")
+
 
 # Создаем окно программы
 root = ctk.CTk()
 root.title("Функции")
 root.iconphoto(True, tk.PhotoImage(file='logo.png'))
 root.geometry('500x500')
-root.resizable(0, 0)
+root.resizable(0, 1)
 
-# Определяем цвета
-
+# Определяем цвета и шрифт
 primary_color = "orange"
 secondary_color = "lightblue"
-
 my_font = ('monospace', 14)
 
 
 # Functions
 
-
-def make_label():
+def make_label(event=0):
     '''Print a label to the app'''
     # print('Hello world')
-    user_input = text_entry.get()
 
-    if user_input == '':
-        return
+    print(event)
+    user_input = text_entry.get() or '...'
 
     text = ctk.CTkLabel(output_frame, text=user_input)
-    text.configure(text_color='black', font=('serif', 18))
+    text.configure(text_color='white', font=my_font)
 
     text.pack()
 
     text_entry.delete(0, 'end')
-
 
 
 def count_up(number):
@@ -43,42 +42,44 @@ def count_up(number):
     global value
 
     text = ctk.CTkLabel(output_frame, text=number)
-    text.configure(text_color='black')
+    text.configure()
     text.pack()
 
     value = number + 1
 
 
-# Фреймы
-input_frame = ctk.CTkFrame(root, fg_color=primary_color, width=500, height=100)
-output_frame = ctk.CTkFrame(root, fg_color=secondary_color, width=500, height=400)
+# Input Frame
+input_frame = ctk.CTkFrame(root)
+input_frame.pack(fill='both', padx=20, pady=20)
 
-input_frame.pack(padx=10, pady=10)
-output_frame.pack(padx=10, pady=(0, 10))
-
-
-# Inputs
-
-text_entry = ctk.CTkEntry(input_frame, width=250)
-text_entry.grid(row=0, column=0, padx=10, pady=5)
-input_frame.grid_propagate(0)
+input_frame.columnconfigure(0, weight=3)
+input_frame.columnconfigure(1, weight=1)
 
 
-print_button = ctk.CTkButton(input_frame, text="Print!", command=make_label)
+text_entry = ctk.CTkEntry(input_frame, font=my_font)
 
-print_button.grid(row=0, column=1, padx=(0,10), ipadx=30, pady=10)
+text_entry.bind("<Return>", make_label)
+
+text_entry.grid(row=0, column=0, sticky='ew', padx=10, pady=10)
+
+print_button = ctk.CTkButton(
+    input_frame, text="Print!", font=my_font, hover_color=primary_color, command=make_label)
+print_button.grid(row=0, column=1, sticky='ew', padx=(0, 10))
 
 
-# Output
-output_frame.pack_propagate(0)
+# Output frame
+
+output_frame = ctk.CTkFrame(root)
+output_frame.pack(fill='both', expand=True, padx=20, pady=(0, 20))
 
 
-# Передаем параметр
+# Pass a parameter
 
 value = 0
-count_button = ctk.CTkButton(input_frame, text='Count', command=lambda:count_up(value))
-count_button.grid(row=1, column=0, columnspan=2, padx=10, ipadx=30, pady=5, sticky='we')
+count_button = ctk.CTkButton(input_frame, text='Count',
+                             command=lambda: count_up(value))
+count_button.grid(row=1, column=0, columnspan=2,
+                  padx=10, ipadx=30, pady=5, sticky='we')
 
 
-# Запускаем основной цикл программы
 root.mainloop()

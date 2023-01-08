@@ -22,11 +22,11 @@ my_font = ('monospace', 14)
 
 # Functions
 
-def make_label(event=0):
+def make_label(event=''):
     '''Print a label to the app'''
-    # print('Hello world')
 
     print(event)
+
     user_input = text_entry.get() or '...'
 
     text = ctk.CTkLabel(output_frame, text=user_input)

@@ -9,6 +9,8 @@ ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
 
+# Функции
+
 def open_file():
     '''Открываем файл для редактирования'''
 
@@ -23,9 +25,6 @@ def open_file():
         text = input_file.read()
         txt_edit.insert(tk.END, text)
     root.title(f"Простой текстовый редактор - {filepath}")
-
-
-
 
 
 def save_file():
@@ -48,12 +47,13 @@ def save_file():
 
 
 
-
-
-
-
 root = ctk.CTk()
 root.title("Простой текстовый редактор")
+
+root.iconphoto(True, tk.PhotoImage(file='icon.png'))
+
+
+
 root.rowconfigure(0, minsize=500, weight=1)
 root.columnconfigure(1, minsize=500, weight=1)
 

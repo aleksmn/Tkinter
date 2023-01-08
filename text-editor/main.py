@@ -27,6 +27,7 @@ def open_file():
     root.title(f"Простой текстовый редактор - {filepath}")
 
 
+
 def save_file():
     '''Сохраняем текущий файл как новый файл.'''
 
@@ -47,29 +48,39 @@ def save_file():
 
 
 
+
+
 root = ctk.CTk()
 root.title("Простой текстовый редактор")
 
 root.iconphoto(True, tk.PhotoImage(file='icon.png'))
 
 
-
+# Разметка окна
 root.rowconfigure(0, minsize=500, weight=1)
 root.columnconfigure(1, minsize=500, weight=1)
 
+
+# Виджеты
+
 txt_edit = ctk.CTkTextbox(root)
-
 fr_buttons = ctk.CTkFrame(root)
-
-btn_open = ctk.CTkButton(fr_buttons, text="Открыть", command=open_file)
-btn_save = ctk.CTkButton(
-    fr_buttons, text="Сохранить как...", command=save_file)
-
-btn_open.grid(row=0, column=0, sticky="ew", padx=10, pady=10)
-btn_save.grid(row=1, column=0, sticky="ew", padx=10)
 
 fr_buttons.grid(row=0, column=0, sticky="ns", padx=20, pady=20)
 txt_edit.grid(row=0, column=1, sticky="nsew", padx=(0, 20), pady=20)
+
+
+
+# Кнопки
+btn_open = ctk.CTkButton(fr_buttons, text="Открыть", command=open_file)
+
+btn_save = ctk.CTkButton(fr_buttons, text="Сохранить как...", command=save_file)
+
+btn_open.grid(row=0, column=0, sticky="ew", padx=10, pady=10)
+
+btn_save.grid(row=1, column=0, sticky="ew", padx=10)
+
+
 
 
 root.mainloop()

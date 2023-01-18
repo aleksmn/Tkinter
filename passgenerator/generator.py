@@ -1,6 +1,7 @@
 import random
 
-def generate(number_of_symbols=12):
+
+def generate_password(number_of_symbols=12):
 
     symbols = []
     for i in range(number_of_symbols):
@@ -20,4 +21,4 @@ def generate(number_of_symbols=12):
 
 
 if __name__ == "__main__":
-    print(generate(12))
+    print(generate_password(12))

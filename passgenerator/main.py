@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from generator import generate
+from generator import generate_password
 
 
 # print(generate())

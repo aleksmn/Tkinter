@@ -70,11 +70,11 @@ def update_color():
 #Define Layout
 color_frame = ctk.CTkFrame(root)
 input_frame = ctk.CTkFrame(root)
-output_frame = ctk.CTkFrame(root)
+
 
 color_frame.pack(fill='both', expand=True, pady=(0,10))
 input_frame.pack(fill='both', expand=True, pady=(0,10))
-output_frame.pack(fill='both', expand=True)
+
 
 
 

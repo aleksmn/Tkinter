@@ -2,7 +2,7 @@ import customtkinter as ctk
 from generator import generate_password
 
 
-# print(generate())
+print(generate_password())
 
 
 root = ctk.CTk()

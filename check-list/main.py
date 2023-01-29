@@ -28,11 +28,9 @@ def add_item():
     my_listbox.insert('end', list_entry.get())
     list_entry.delete(0, 'end')
 
-
 def remove_item():
     """Удаляем строку из списка"""
     my_listbox.delete('anchor')
-
 
 def clear_list():
     """Удаляем все из списка"""
@@ -47,21 +45,15 @@ def save_list():
         list_tuple = my_listbox.get(0, 'end')
 
         for item in list_tuple:
-            # Добавляем перенос на новую строку
-            if item.endswith('\n'):
-                f.write(item)
-            else:
-                f.write(item + '\n')
-
-
+            f.write(item + '\n')
 
 
 def open_list():
     """Открываем список из файла, если он есть"""
     try:
-        with open('checklist.txt', 'r') as f:
+        with open('checklist.txt', 'r', encoding='utf-8') as f:
             for line in f:
-                my_listbox.insert('end', line)
+                my_listbox.insert('end', line.strip())
     except:
         return
 
@@ -91,12 +83,11 @@ list_add_button.grid(row=0, column=3)
 my_listbox = tk.Listbox(root, borderwidth=0, height=14, bg=root['bg'])
 my_listbox.grid(row=1, column=0, columnspan=4, sticky='nsew')
 
+
 # Scrollbar
 my_scrollbar = ctk.CTkScrollbar(root, command=my_listbox.yview)
 my_scrollbar.grid(row=1, column=3, sticky='nse')
-
 my_listbox.configure(yscrollcommand=my_scrollbar.set)
-
 
 # Buttons
 list_remove_button = ctk.CTkButton(
@@ -112,7 +103,7 @@ save_button.grid(row=2, column=2, padx=(20, 0))
 quit_button.grid(row=2, column=3, padx=(20, 0))
 
 
-# Open List if available
+
 open_list()
 
 # Start Mainloop

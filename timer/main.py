@@ -1,93 +1,91 @@
+import threading
 import time
-from tkinter import *
-from customtkinter import *
-from tkinter import messagebox
+import customtkinter as ctk
+from playsound import playsound
+
+import os
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
-# creating Tk window
-root = CTk()
 
-# setting geometry of tk window
-root.geometry("300x250")
+ctk.set_appearance_mode('dark')
 
-# Using title() to display a message in
-# the dialogue box of the message in the
-# title bar.
-root.title("Time Counter")
+# Создаем класс для таймера
 
-# Declaration of variables
-hour = StringVar()
-minute = StringVar()
-second = StringVar()
+class Timer:
 
-# setting the default value as 0
-hour.set("00")
-minute.set("00")
-second.set("00")
+    def __init__(self):
+        self.root = ctk.CTk()
+        self.root.title('Таймер')
 
-# Use of Entry class to take input from the user
-hourEntry = CTkEntry(root, width=40, font=("Arial", 18, ""),
-                  textvariable=hour)
-hourEntry.place(x=80, y=20)
+        self.time_entry = ctk.CTkEntry(self.root, font=('sans-serif', 20))
+        self.time_entry.grid(row=0, column=0,  padx=10, pady=10)
 
-minuteEntry = CTkEntry(root, width=40, font=("Arial", 18, ""),
-                    textvariable=minute)
-minuteEntry.place(x=130, y=20)
+        self.start_button = ctk.CTkButton(self.root,
+                                          font=('sans-serif', 20),
+                                          text="Старт",
+                                          command=self.start_thread)
+        self.start_button.grid(row=0, column=1, padx=10, pady=10)
 
-secondEntry = CTkEntry(root, width=40, font=("Arial", 18, ""),
-                    textvariable=second)
-secondEntry.place(x=180, y=20)
+        self.stop_button = ctk.CTkButton(self.root,
+                                         font=('sans-serif', 20),
+                                         text="Стоп",
+                                         command=self.stop)
+        self.stop_button.grid(row=1, column=1, padx=10, pady=(0, 10))
 
+        self.time_label = ctk.CTkLabel(self.root,
+                                       font=('sans-serif', 30),
+                                       text="00:00:00")
+        self.time_label.grid(row=1, column=0,  padx=10, pady=(0, 10))
 
-def submit():
-	try:
-		# the input provided by the user is
-		# stored in here :temp
-		temp = int(hour.get())*3600 + int(minute.get())*60 + int(second.get())
-	except:
-		print("Please input the right value")
-	while temp > -1:
+        self.stop_loop = False
 
-		# divmod(firstvalue = temp//60, secondvalue = temp%60)
-		mins, secs = divmod(temp, 60)
+        self.root.mainloop()
 
-		# Converting the input entered in mins or secs to hours,
-		# mins ,secs(input = 110 min --> 120*60 = 6600 => 1hr :
-		# 50min: 0sec)
-		hours = 0
-		if mins > 60:
+    def start_thread(self):
+        t = threading.Thread(target=self.start)
+        t.start()
 
-			# divmod(firstvalue = temp//60, secondvalue
-			# = temp%60)
-			hours, mins = divmod(mins, 60)
+    def start(self):
+        self.stop_loop = False
+        hours, minutes, seconds = 0, 0, 0
+        string_split = self.time_entry.get().split(":")
+        if len(string_split) == 3:
+            hours = int(string_split[0])
+            minutes = int(string_split[1])
+            seconds = int(string_split[2])
+        elif len(string_split) == 2:
+            minutes = int(string_split[0])
+            seconds = int(string_split[1])
+        elif len(string_split) == 1:
+            seconds = int(string_split[0])
+        else:
+            print("Неверный формат ввода")
+            return
 
-		# using format () method to store the value up to
-		# two decimal places
-		hour.set("{0:2d}".format(hours))
-		minute.set("{0:2d}".format(mins))
-		second.set("{0:2d}".format(secs))
+        full_seconds = hours * 3600 + minutes * 60 + seconds
 
-		# updating the GUI window after decrementing the
-		# temp value every time
-		root.update()
-		time.sleep(1)
+        while full_seconds > 0 and not self.stop_loop:
+            full_seconds -= 1 
 
-		# when temp value = 0; then a messagebox pop's up
-		# with a message:"Time's up"
-		if (temp == 0):
-			messagebox.showinfo("Time Countdown", "Time's up ")
+            minutes, seconds = divmod(full_seconds, 60)
+            hours, minutes = divmod(minutes, 60)
 
-		# after every one sec the value of temp will be decremented
-		# by one
-		temp -= 1
+            self.time_label.configure(text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
+            self.root.update()
+            time.sleep(1)
+
+        if not self.stop_loop:
+            print('Таймер закончен!')
+            playsound(dir_path+"/alarm.wav")
 
 
-# button widget
-btn = CTkButton(root, text='Set Time Countdown', 
-             command=submit)
-btn.place(x=70, y=120)
 
-# infinite loop which is required to
-# run tkinter program infinitely
-# until an interrupt occurs
-root.mainloop()
+
+
+    def stop(self):
+        self.stop_loop = True
+        self.time_label.configure(text="00:00:00")
+
+
+Timer()

@@ -6,41 +6,38 @@ from playsound import playsound
 import os
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-
-
 ctk.set_appearance_mode('dark')
 
 # Создаем класс для таймера
 
-class Timer:
+class Timer(ctk.CTk):
 
     def __init__(self):
-        self.root = ctk.CTk()
-        self.root.title('Таймер')
+        super().__init__()
+        self.title('Таймер')
 
-        self.time_entry = ctk.CTkEntry(self.root, font=('sans-serif', 20))
+        self.time_entry = ctk.CTkEntry(self, font=('sans-serif', 20))
         self.time_entry.grid(row=0, column=0,  padx=10, pady=10)
 
-        self.start_button = ctk.CTkButton(self.root,
+        self.start_button = ctk.CTkButton(self,
                                           font=('sans-serif', 20),
                                           text="Старт",
                                           command=self.start_thread)
         self.start_button.grid(row=0, column=1, padx=10, pady=10)
 
-        self.stop_button = ctk.CTkButton(self.root,
+        self.stop_button = ctk.CTkButton(self,
                                          font=('sans-serif', 20),
                                          text="Стоп",
                                          command=self.stop)
         self.stop_button.grid(row=1, column=1, padx=10, pady=(0, 10))
 
-        self.time_label = ctk.CTkLabel(self.root,
+        self.time_label = ctk.CTkLabel(self,
                                        font=('sans-serif', 30),
                                        text="00:00:00")
         self.time_label.grid(row=1, column=0,  padx=10, pady=(0, 10))
 
         self.stop_loop = False
 
-        self.root.mainloop()
 
     def start_thread(self):
         t = threading.Thread(target=self.start)
@@ -72,20 +69,21 @@ class Timer:
             hours, minutes = divmod(minutes, 60)
 
             self.time_label.configure(text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
-            self.root.update()
+            self.update()
             time.sleep(1)
 
         if not self.stop_loop:
-            print('Таймер закончен!')
+            # print('Таймер закончен!')
             playsound(dir_path+"/alarm.wav")
-
-
-
-
 
     def stop(self):
         self.stop_loop = True
         self.time_label.configure(text="00:00:00")
 
 
-Timer()
+
+
+
+if __name__ == "__main__":
+  app = Timer()
+  app.mainloop()

@@ -34,3 +34,21 @@ print('Часы:', hours)
 print('Минуты:', minutes)
 print('Секунды:', seconds)
 
+
+
+# Посчитать, сколько это секунд:
+
+full_seconds = hours * 3600 + minutes * 60 + seconds
+
+print("Общее кол-во секунд:", full_seconds)
+
+
+
+
+
+
+# divmod
+
+
+# divmod(9, 5)  
+#---> (1, 4)

@@ -20,7 +20,7 @@ class App(ctk.CTk):
         self.configure(padx=20, pady=20)
         self.iconphoto(True, tk.PhotoImage(file=dir_path+'/icon.png'))
 
-        self.clock_frame = ClockFrame(self, primary_color='magenta')
+        self.clock_frame = ClockFrame(self, primary_color='white')
         self.clock_frame.grid(column=0, row=0, padx=10, pady=10)
 
         self.clock_frame = TimerFrame(self)

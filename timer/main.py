@@ -10,11 +10,11 @@ ctk.set_appearance_mode('dark')
 
 # Создаем класс для таймера
 
-class Timer(ctk.CTk):
 
-    def __init__(self):
-        super().__init__()
-        self.title('Таймер')
+class TimerFrame(ctk.CTkFrame):
+
+    def __init__(self, container):
+        super().__init__(container)
 
         self.time_entry = ctk.CTkEntry(self, font=('sans-serif', 20))
         self.time_entry.grid(row=0, column=0,  padx=10, pady=10)
@@ -37,7 +37,6 @@ class Timer(ctk.CTk):
         self.time_label.grid(row=1, column=0,  padx=10, pady=(0, 10))
 
         self.stop_loop = False
-
 
     def start_thread(self):
         t = threading.Thread(target=self.start)
@@ -63,12 +62,13 @@ class Timer(ctk.CTk):
         full_seconds = hours * 3600 + minutes * 60 + seconds
 
         while full_seconds > 0 and not self.stop_loop:
-            full_seconds -= 1 
+            full_seconds -= 1
 
             minutes, seconds = divmod(full_seconds, 60)
             hours, minutes = divmod(minutes, 60)
 
-            self.time_label.configure(text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
+            self.time_label.configure(
+                text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
             self.update()
             time.sleep(1)
 
@@ -83,7 +83,25 @@ class Timer(ctk.CTk):
 
 
 
+class App(ctk.CTk):
+    def __init__(self):
+        super().__init__()
+
+        self.title('Таймер')
+
+        # Настраиваем окно
+        self.configure(padx=20, pady=20)
+
+        # Добавляем модуль таймера
+        self.timer_frame = TimerFrame(self)
+        self.timer_frame.grid(column=0, row=0)
+
+
+
+
+
 
 if __name__ == "__main__":
-  app = Timer()
-  app.mainloop()
+
+    app = App()
+    app.mainloop()

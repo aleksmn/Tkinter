@@ -90,11 +90,16 @@ class App(ctk.CTk):
         self.title('Таймер')
 
         # Настраиваем окно
-        self.configure(padx=20, pady=20)
+        self.configure(padx=10, pady=10)
+
+        options = {"padx":10, "pady":10}
 
         # Добавляем модуль таймера
         self.timer_frame = TimerFrame(self)
-        self.timer_frame.grid(column=0, row=0)
+        self.timer_frame.grid(column=0, row=0, **options)
+
+        # self.timer_frame2 = TimerFrame(self)
+        # self.timer_frame2.grid(column=0, row=1, **options)
 
 
 

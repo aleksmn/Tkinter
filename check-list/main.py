@@ -17,7 +17,7 @@ secondary_color = 'orange'
 # Define Window
 root = ctk.CTk()
 root.title("Check List")
-root.iconphoto(True, tk.PhotoImage(file='logo.png'))
+# root.iconphoto(True, tk.PhotoImage(file='logo.png'))
 root.configure(padx=20)
 
 

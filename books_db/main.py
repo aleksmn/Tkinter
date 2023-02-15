@@ -35,8 +35,8 @@ class LibraryFrame(ctk.CTkFrame):
                                text_color=secondary_color, font=primary_font)
 
         self.l1.grid(row=0, column=0, sticky='w', padx=20, pady=10)
-        self.l2.grid(row=0, column=1, sticky='w', padx=(0, 20))
-        self.l3.grid(row=0, column=2, sticky='w', padx=(0, 20))
+        self.l2.grid(row=0, column=3, sticky='w', padx=(0, 20))
+        self.l3.grid(row=0, column=5, sticky='w', padx=(0, 20))
 
         # Поля для ввода
 
@@ -50,9 +50,9 @@ class LibraryFrame(ctk.CTkFrame):
         self.isbn_text = ctk.StringVar()  # taking isbn input
         self.e3 = ctk.CTkEntry(self, textvariable=self.isbn_text)
 
-        self.e1.grid(row=1, column=0, sticky="we", padx=20)
-        self.e2.grid(row=1, column=1, sticky="we", padx=(0, 20))
-        self.e3.grid(row=1, column=2, sticky="we", padx=(0, 20))
+        self.e1.grid(row=1, column=0, columnspan=3, sticky="we", padx=20)
+        self.e2.grid(row=1, column=3, columnspan=2, sticky="we", padx=(0, 20))
+        self.e3.grid(row=1, column=5, sticky="we", padx=(0, 20))
 
         # # LISTBOX
 
@@ -83,17 +83,10 @@ class LibraryFrame(ctk.CTkFrame):
         self.b5 = ctk.CTkButton(self, text="Удалить")
         self.b5.grid(row=3, column=4, sticky="we", padx=(0, 10))
 
-        self.b6 = ctk.CTkButton(self, text="Закрыть")
+        self.b6 = ctk.CTkButton(self, text="Закрыть", command=container.destroy)
         self.b6.grid(row=3, column=5, sticky="we", padx=(0, 10))
 
-        # b4 = Button(window, text="Update selected", width=12, command=update_command)
-        # b4.grid(row=5, column=3)
 
-        # b5 = Button(window, text="Delete selected", width=12, command=delete_command)
-        # b5.grid(row=6, column=3)
-
-        # b6 = Button(window, text="Close", width=12, command=window.destroy)
-        # b6.grid(row=7, column=3)
 
 
 class App(ctk.CTk):

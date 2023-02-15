@@ -8,7 +8,7 @@ class DB:
         self.cur = self.conn.cursor()  # создаем курсор для работы с базой данных
         # SQL запрос для создания таблицы
         self.cur.execute(
-            "CREATE TABLE IF NOT EXISTS book (id INTEGER PRIMARY KEY, title TEXT, author TEXT, isbn TEXT)")
+            "CREATE TABLE IF NOT EXISTS book (id INTEGER PRIMARY KEY, title TEXT, author TEXT, year TEXT)")
         self.conn.commit()  # commit - сохраняем изменения
 
     def __del__(self):  # деструктор
@@ -20,10 +20,10 @@ class DB:
         rows = self.cur.fetchall()
         return rows
 
-    def insert(self, title, author, isbn):
+    def insert(self, title, author, year):
         '''Добавление новой записи'''
         self.cur.execute("INSERT INTO book VALUES (NULL,?,?,?)",
-                         (title, author, isbn,))
+                         (title, author, year,))
         self.conn.commit()
         self.view()
 
@@ -50,5 +50,5 @@ class DB:
 
 if __name__ == "__main__":
     db = DB()
-    db.insert('Тест Название', "Тест Автор", "Тест ISBN")
+    db.insert('Тест Название', 'Тест Автор', 'Тест Год')
     print(db.view())

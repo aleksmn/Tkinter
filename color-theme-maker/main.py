@@ -73,10 +73,7 @@ input_frame = ctk.CTkFrame(root)
 
 
 color_frame.pack(fill='both', expand=True, pady=(0,10))
-input_frame.pack(fill='both', expand=True, pady=(0,10))
-
-
-
+input_frame.pack(fill='both', expand=True, pady=10)
 
 
 #Create the color box and color labels
@@ -90,41 +87,38 @@ color_hex.grid(row=1, column=0)
 color_frame.grid_columnconfigure(0, weight=1)
 
 
-#Setting up the input frame.
-#Create the labels, sliders, and buttons for each color RGB
+# Input frame.
+
 # RED
 red_label = ctk.CTkLabel(input_frame, text="R")
 red_slider = ctk.CTkSlider(input_frame, from_=0, to=255, orientation='horizontal', command=get_red)
 red_label = ctk.CTkLabel(input_frame, text="R")
 red_slider.set(0)
-# red_button = ctk.CTkButton(input_frame, text="Red")
+
 
 # GREEN
 green_label = ctk.CTkLabel(input_frame, text="G")
 green_slider = ctk.CTkSlider(input_frame, from_=0, to=255, orientation='horizontal', command=get_green)
 green_slider.set(0)
-# green_button = ctk.CTkButton(input_frame, text="Green")
+
 
 
 # BLUE
 blue_label = ctk.CTkLabel(input_frame, text="B")
 blue_slider = ctk.CTkSlider(input_frame, from_=0, to=255, orientation='horizontal', command=get_blue)
 blue_slider.set(0)
-# blue_button = ctk.CTkButton(input_frame, text="Blue")
 
-
-#Put labels, sliders, and buttons on to the frame.
 
 red_label.grid(row=0, column=0, sticky='W')
 red_slider.grid(row=0, column=1, sticky='W')
-# red_button.grid(row=2, column=0, padx=5, pady=5)
+
 
 green_label.grid(row=1, column=0, sticky='W')
 green_slider.grid(row=1, column=1, sticky='W')
-# green_button.grid(row=2, column=1, padx=5, pady=5)
+
 
 blue_label.grid(row=2, column=0, sticky='W')
 blue_slider.grid(row=2, column=1, sticky='W')
-# blue_button.grid(row=2, column=2, padx=5, pady=5)
+
 
 root.mainloop()

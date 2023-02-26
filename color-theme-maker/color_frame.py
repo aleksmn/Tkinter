@@ -1,18 +1,10 @@
-'''Color Theme Maker'''
 import tkinter as tk
 import customtkinter as ctk
-
-# Modes: "System" (standard), "Dark", "Light"
-ctk.set_appearance_mode("dark")
-# Themes: "blue" (standard), "green", "dark-blue"
-ctk.set_default_color_theme("dark-blue")
-
 
 # Fonts and Colors
 my_font = ('sans-serif', 14)
 primary_color = 'slateblue'
 secondary_color = 'orange'
-
 
 class ColorFrame(ctk.CTkFrame):
 
@@ -23,20 +15,20 @@ class ColorFrame(ctk.CTkFrame):
 
         # Define Layout
 
-        self.color_box = ctk.CTkLabel(self, fg_color='black', text='', height=100, width=100)
+        self.color_box = ctk.CTkLabel(
+            self, fg_color='black', text='', height=100, width=100)
         self.color_hex = ctk.CTkEntry(self, justify='center', width=100)
         self.color_hex.insert('end', "#000000")
 
         self.color_box.grid(row=0, column=0, columnspan=2, padx=35, pady=10)
         self.color_hex.grid(row=1, column=0, columnspan=2,)
 
-
-
         # Input frame.
 
         # RED
         self.red_label = ctk.CTkLabel(self, text="R")
-        self.red_slider = ctk.CTkSlider(self, from_=0, to=255, orientation='horizontal', command=self.get_red)
+        self.red_slider = ctk.CTkSlider(
+            self, from_=0, to=255, orientation='horizontal', command=self.get_red)
         self.red_label = ctk.CTkLabel(self, text="R")
         self.red_slider.set(0)
 
@@ -48,9 +40,9 @@ class ColorFrame(ctk.CTkFrame):
 
         # BLUE
         self.blue_label = ctk.CTkLabel(self, text="B")
-        self.blue_slider = ctk.CTkSlider(self, from_=0, to=255, orientation='horizontal', command=self.get_blue)
+        self.blue_slider = ctk.CTkSlider(
+            self, from_=0, to=255, orientation='horizontal', command=self.get_blue)
         self.blue_slider.set(0)
-
 
         # Размещаем все элементы:
 
@@ -95,32 +87,11 @@ class ColorFrame(ctk.CTkFrame):
         self.color_hex.insert(0, selected_color)
 
 
-class App(ctk.CTk):
-    def __init__(self):
-        super().__init__()
-
-        self.title('Color Themes')
-
-        try:
-            self.iconphoto(True, tk.PhotoImage(file='bulb-icon.png'))
-
-        except:
-            pass
-        self.configure(padx=10, pady=10)
-
-        options = {'padx': 10, 'pady': 10}
-
-        self.color_frame = ColorFrame(self)
-        self.color_frame.grid(column=0, row=0, **options)
-        self.color2_frame = ColorFrame(self)
-        self.color2_frame.grid(column=1, row=0, **options)
-        self.color3_frame = ColorFrame(self)
-        self.color3_frame.grid(column=2, row=0, **options)
-        self.color4_frame = ColorFrame(self)
-        self.color4_frame.grid(column=3, row=0, **options)
 
 
 if __name__ == "__main__":
 
-    app = App()
+    app = ctk.CTk()
+    app.title('Color')
+    cf = ColorFrame(app).grid(column=0, row=0)
     app.mainloop()

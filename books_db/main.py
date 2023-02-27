@@ -26,13 +26,13 @@ class LibraryFrame(ctk.CTkFrame):
         # Лейблы
 
         self.l1 = ctk.CTkLabel(self, text="Название",
-                               text_color=secondary_color, font=primary_font)
+                               text_color=primary_color, font=primary_font)
 
         self.l2 = ctk.CTkLabel(self, text="Автор",
-                               text_color=secondary_color, font=primary_font)
+                               text_color=primary_color, font=primary_font)
 
         self.l3 = ctk.CTkLabel(self, text="Год",
-                               text_color=secondary_color, font=primary_font)
+                               text_color=primary_color, font=primary_font)
 
         self.l1.grid(row=0, column=0, sticky='w', padx=20)
         self.l2.grid(row=0, column=3, sticky='w', padx=(0, 20))

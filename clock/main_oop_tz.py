@@ -21,7 +21,7 @@ class ClockFrame(ctk.CTkFrame):
         # Настраиваем цвет по умолчанию, то есть, если цвет не передан в качестве аргумента
         primary_color = "darkorchid1" if primary_color == None else primary_color
         secondary_color = "#39B5E0"
-        primary_font = 'monospace', 30
+        primary_font = 'monospace', 28
         secondary_font = 'monospace', 100
 
         self.configure(fg_color="transparent")

@@ -13,6 +13,8 @@ class ColorFrame(ctk.CTkFrame):
 
         self.red_value, self.green_value, self.blue_value = '00', '00', '00'
 
+        self.selected_color = '#' + self.red_value + self.green_value + self.blue_value
+
         # Define Layout
 
         self.color_box = ctk.CTkLabel(
@@ -81,10 +83,13 @@ class ColorFrame(ctk.CTkFrame):
 
     def update_color(self):
         # print(red_value, green_value, blue_value)
-        selected_color = f'#{self.red_value}{self.green_value}{self.blue_value}'
-        self.color_box.configure(fg_color=selected_color)
+        self.selected_color = f'#{self.red_value}{self.green_value}{self.blue_value}'
+        self.color_box.configure(fg_color=self.selected_color)
         self.color_hex.delete(0, 'end')
-        self.color_hex.insert(0, selected_color)
+        self.color_hex.insert(0, self.selected_color)
+
+    def get_color(self):
+        return self.selected_color
 
 
 

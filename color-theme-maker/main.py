@@ -27,14 +27,43 @@ class App(ctk.CTk):
 
         options = {'padx': 10, 'pady': 10}
 
-        self.color_frame = ColorFrame(self)
-        self.color_frame.grid(column=0, row=0, **options)
-        self.color2_frame = ColorFrame(self)
-        self.color2_frame.grid(column=1, row=0, **options)
-        self.color3_frame = ColorFrame(self)
-        self.color3_frame.grid(column=2, row=0, **options)
-        self.color4_frame = ColorFrame(self)
-        self.color4_frame.grid(column=3, row=0, **options)
+        self.color_frame_1 = ColorFrame(self)
+        self.color_frame_1.grid(column=0, row=0, **options)
+        self.color_frame_2 = ColorFrame(self)
+        self.color_frame_2.grid(column=1, row=0, **options)
+        self.color_frame_3 = ColorFrame(self)
+        self.color_frame_3.grid(column=2, row=0, **options)
+        self.color_frame_4 = ColorFrame(self)
+        self.color_frame_4.grid(column=3, row=0, **options)
+
+
+        # # Меню
+        # self.menu = tk.Menu(self)
+        # self.menu.configure(bg='#221f1e', fg='white',
+        #                     border=0, font=('sans-serif', 9), activebackground='lightgrey')
+        # self.configure(menu=self.menu)
+        # self.menu.add_command(label='Сохранить', command=self.save_colors)
+
+
+    def save_colors(self):
+        colors = [
+            self.color_frame_1.get_color(),
+            self.color_frame_2.get_color(),
+            self.color_frame_3.get_color(),
+            self.color_frame_4.get_color(),
+        ]
+
+        # for c in colors:
+        #     print(c)
+
+        with open('my_colors.txt', 'w', encoding='utf-8') as f:
+            for c in colors:
+                f.write(c + '\n')
+
+        
+
+
+
 
 
 if __name__ == "__main__":

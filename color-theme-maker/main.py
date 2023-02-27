@@ -21,10 +21,10 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title('Color Themes')
+        self.title('Color Theme Maker')
 
         try:
-            self.iconphoto(True, tk.PhotoImage(file='bulb-icon.png'))
+            self.iconphoto(True, tk.PhotoImage(file=dir_path + '/icon.png'))
         except:
             pass
         

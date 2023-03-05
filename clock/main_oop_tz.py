@@ -53,12 +53,14 @@ class ClockFrame(ctk.CTkFrame):
         self.update()
 
     def get_time(self):
-
         if self.tz == None:
             return datetime.now()
         else:
-            now_utc = datetime.now(timezone('UTC'))
-            return now_utc.astimezone(timezone(self.tz))
+            # now_utc = datetime.now(timezone('UTC'))
+            # return now_utc.astimezone(timezone(self.tz))
+            return datetime.now(timezone(self.tz))
+        
+
 
     def update(self):
         time = self.get_time()
@@ -91,14 +93,14 @@ class App(ctk.CTk):
 
         self.clock_frame2 = ClockFrame(self,
                                        primary_color='magenta',
-                                       tz='Asia/Vladivostok',
-                                       title='Владивосток')
+                                       tz='Asia/Novosibirsk',
+                                       title='Новосибирск')
         self.clock_frame2.grid(column=0, row=2, padx=40, pady=40)
 
         self.clock_frame3 = ClockFrame(self,
                                        primary_color='cyan',
-                                       tz='Europe/Paris',
-                                       title='Париж')
+                                       tz='Asia/Vladivostok',
+                                       title='Владивосток')
         self.clock_frame3.grid(column=0, row=3, padx=40, pady=40)
 
 

@@ -22,6 +22,7 @@ class DB:
 
     def insert(self, title, author, year):
         '''Добавление новой записи'''
+        # SQL запрос
         self.cur.execute("INSERT INTO book VALUES (NULL,?,?,?)",
                          (title, author, year,))
         self.conn.commit()
@@ -29,6 +30,7 @@ class DB:
 
     def update(self, id, title, author):
         '''Обновить значения для выбранной строки'''
+        # SQL запрос (специальный язык для выполнения действий с базой данных)
         self.cur.execute(
             "UPDATE book SET title=?, author=? WHERE id=?", (title, author, id,))
         self.conn.commit()
@@ -36,6 +38,7 @@ class DB:
 
     def delete(self, id):
         '''Удалить строку по ID'''
+         # SQL запрос 
         self.cur.execute("DELETE FROM book WHERE id=?", (id,))
         self.conn.commit()
         self.view()
@@ -50,5 +53,14 @@ class DB:
 
 if __name__ == "__main__":
     db = DB()
-    db.insert('Тест Название', 'Тест Автор', 'Тест Год')
-    print(db.view())
+    db.insert('Таинственный остров', 'Верн Ж.', '1850')
+    db.insert('Вокруг света за 80 дней', 'Верн Ж.', '1845')
+    db.insert('Дубровский', 'Пушкин А. С.', '1820')
+
+    # Изменяем запись с id 1
+    db.update('1', '20 тысяц лье под водой', 'Верн Ж.')
+
+    # print(db.view())
+
+    print("Результат поиска: ")
+    print(db.search(author='Пушкин А. С.'))

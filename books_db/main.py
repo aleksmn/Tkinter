@@ -55,7 +55,7 @@ class LibraryFrame(ctk.CTkFrame):
 
         # # LISTBOX
 
-        self.list1 = tk.Listbox(self, borderwidth=0, bg=self['bg'], fg='white')
+        self.list1 = tk.Listbox(self, borderwidth=0, bg=self['bg'], fg='white', font=('monospace, 12'))
         self.list1.grid(row=2, column=0, columnspan=6,
                              sticky='ew', padx=20, pady=20)
 

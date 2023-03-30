@@ -15,7 +15,7 @@ class LibraryFrame(ctk.CTkFrame):
     def __init__(self, container, **kwargs):
         super().__init__(container, **kwargs)
 
-        primary_color = "darkorchid1"
+        primary_color = "#B9F3FC"
         secondary_color = "slateblue"
         primary_font = 'monospace', 18
 

@@ -64,7 +64,7 @@ class LibraryFrame(ctk.CTkFrame):
         # # Scrollbar
         self.my_scrollbar = ctk.CTkScrollbar(
             self, command=self.list1.yview)
-        self.my_scrollbar.grid(row=2, column=6, sticky='nsw', pady=20)
+        self.my_scrollbar.grid(row=2, column=5, sticky='nse', pady=20)
         self.list1.configure(yscrollcommand=self.my_scrollbar.set)
 
         # BUTTONS

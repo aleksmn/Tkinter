@@ -17,7 +17,7 @@ class LibraryFrame(ctk.CTkFrame):
 
         primary_color = "#B9F3FC"
         secondary_color = "slateblue"
-        primary_font = 'monospace', 18
+        primary_font = 'monospace', 16
 
         self.configure(fg_color='transparent')
 
@@ -150,7 +150,7 @@ class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title('My Books')
+        self.title('Домашняя библиотека')
         self.configure(padx=20, pady=20)
         self.minsize(600, 0)
         self.maxsize(800, 0)

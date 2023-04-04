@@ -53,8 +53,10 @@ def save_file():
 root = ctk.CTk()
 root.title("Простой текстовый редактор")
 
-root.iconphoto(True, tk.PhotoImage(file='icon.png'))
-
+try:
+    root.iconphoto(True, tk.PhotoImage(file='icon.png'))
+except:
+    pass
 
 # Разметка окна
 root.rowconfigure(0, minsize=500, weight=1)

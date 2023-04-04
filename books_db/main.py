@@ -134,6 +134,7 @@ class LibraryFrame(ctk.CTkFrame):
     def update(self):
         '''Изменить строку'''
         db.update(selected_tuple[0], self.title_text.get(), self.author_text.get()) 
+        self.view()
 
 
     def delete_command(self):

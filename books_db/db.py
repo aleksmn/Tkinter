@@ -45,8 +45,13 @@ class DB:
 
     def search(self, title="", author=""):
         '''Поиск по названию или по автору'''
-        self.cur.execute(
-            "SELECT * FROM book WHERE title=? OR author=?", (title, author,))
+
+        if title:
+            self.cur.execute(
+                f"SELECT * FROM book WHERE title LIKE '%{title}%'")
+        else:
+            self.cur.execute(
+                f"SELECT * FROM book WHERE author LIKE '%{author}%'")
         rows = self.cur.fetchall()
         return rows
 
@@ -64,4 +69,4 @@ if __name__ == "__main__":
     # print(db.view())
 
     print("Результат поиска: ")
-    print(db.search(author='Пушкин А. С.'))
+    print(db.search(author='пушкин'))

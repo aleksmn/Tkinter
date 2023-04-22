@@ -1,14 +1,12 @@
 # Metric Helper
-import tkinter as tk
 import customtkinter as ctk
 
-
+# Настраиваем тему
 ctk.set_appearance_mode("light")
 
 # Создаем окно
 root = ctk.CTk()
 root.title('Metric Helper')
-root.iconphoto(True, tk.PhotoImage(file='logo.png'))
 root.resizable(0, 0)
 
 # Определяем цвета и шрифт

@@ -11,7 +11,7 @@ from color_frame import ColorFrame
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 # Modes: "System" (standard), "Dark", "Light"
-ctk.set_appearance_mode("dark")
+ctk.set_appearance_mode("light")
 # Themes: "blue" (standard), "green", "dark-blue"
 ctk.set_default_color_theme("dark-blue")
 

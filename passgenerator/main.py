@@ -24,10 +24,14 @@ root.title("Pass Generator")
 
 root.resizable(0, 0)
 
+root.configure(fg_color='#2A2F4F')
+
 text_output = ctk.CTkEntry(root,
                            placeholder_text='PASSWORD',
                            corner_radius=0,
-                           width=number_of_symbols*14,
+                           fg_color='#F0F0F0',
+                           text_color='black',
+                           width=14*number_of_symbols,
                            height=40,
                            justify='center',
                            font=('monospace', 20, 'bold'))
@@ -37,15 +41,14 @@ text_output.grid(column=0, row=0, padx=40, pady=40)
 
 pass_btn = ctk.CTkButton(root,
                          text="Generate",
-                         fg_color='slateblue',
-                         hover_color='purple',
+                         fg_color='#39B5E0',
+                         hover_color='#A31ACB',
                          corner_radius=0,
                          font=('sans-serif', 20, 'bold'),
-                         width=200,
                          height=40,
-                         command=lambda: display_password(number_of_symbols)
-                         )
+                         command=lambda:display_password(number_of_symbols))
 
-pass_btn.grid(column=0, row=1, padx=40, pady=(0, 40), sticky='we')
+
+pass_btn.grid(column=0, row=1, padx=40, pady=(0, 40), sticky="we")
 
 root.mainloop()

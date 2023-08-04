@@ -1,15 +1,9 @@
 import customtkinter as ctk
+
 from generator import generate_password
 
-
+# Настройка кол-ва символов в пароле
 number_of_symbols = 18
-
-
-# print(generate_password(number_of_symbols))
-
-
-ctk.set_appearance_mode("dark")
-
 
 
 # # Functions
@@ -17,6 +11,11 @@ def display_password(number_of_symbols):
     """Выводим пароль на экран"""
     text_output.delete(0, 'end')
     text_output.insert(0, generate_password(number_of_symbols))
+
+
+# Настройка интерфейса программы
+
+ctk.set_appearance_mode("dark")
 
 root = ctk.CTk()
 
@@ -30,7 +29,7 @@ text_output = ctk.CTkEntry(root,
                            placeholder_text='PASSWORD',
                            corner_radius=0,
                            fg_color='#F0F0F0',
-                           text_color='black',
+                           text_color='#555',
                            width=14*number_of_symbols,
                            height=40,
                            justify='center',
@@ -38,6 +37,7 @@ text_output = ctk.CTkEntry(root,
 
 
 text_output.grid(column=0, row=0, padx=40, pady=40)
+
 
 pass_btn = ctk.CTkButton(root,
                          text="Generate",
@@ -51,4 +51,11 @@ pass_btn = ctk.CTkButton(root,
 
 pass_btn.grid(column=0, row=1, padx=40, pady=(0, 40), sticky="we")
 
+
+
+
+
+
+
+# Последняя строка
 root.mainloop()

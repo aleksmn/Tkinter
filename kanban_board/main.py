@@ -1,7 +1,7 @@
 import tkinter as tk
 
 
-def move_task(event, source_list, target_list):
+def move_task(event, source_list, target_list=None):
 
     try:
         # Получение выбранной задачи
@@ -9,7 +9,8 @@ def move_task(event, source_list, target_list):
         print(task)
         # Перемещение задачи из одной доски в другую
         source_list.delete(source_list.curselection())
-        target_list.insert("end", task)
+        if target_list:
+            target_list.insert("end", task)
     except Exception as e:
         # print("Ошибка ", e)
         print("Listbox пуст!")
@@ -20,6 +21,9 @@ def create_task(event):
     if task:
         todo_list.insert("end", task)
         entry.delete(0, "end")
+
+
+
 
 # Создание главного окна
 root = tk.Tk()
@@ -49,7 +53,7 @@ add_button.bind("<Button-1>", create_task)
 # Привязка событий перемещения задачи между списками
 todo_list.bind("<<ListboxSelect>>", lambda e: move_task(e, todo_list, in_progress_list))
 in_progress_list.bind("<<ListboxSelect>>", lambda e: move_task(e, in_progress_list, done_list))
-done_list.bind("<<ListboxSelect>>", lambda e: move_task(e, done_list, todo_list))
+done_list.bind("<<ListboxSelect>>", lambda e: move_task(e, done_list))
 
 # Запуск главного цикла событий
 root.mainloop()

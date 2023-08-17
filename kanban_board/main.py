@@ -35,20 +35,24 @@ in_progress_list = tk.Listbox(root, height=10, width=30)
 done_list = tk.Listbox(root, height=10, width=30)
 
 
+
 # Расположение списков на доске
-todo_list.grid(row=0, column=0, padx=10, pady=10)
-in_progress_list.grid(row=0, column=1, padx=10, pady=10)
-done_list.grid(row=0, column=2, padx=10, pady=10)
+todo_list.grid(row=0, column=0, padx=20, pady=20)
+in_progress_list.grid(row=0, column=1, padx=(0, 20), pady=20)
+done_list.grid(row=0, column=2, padx=(0, 20), pady=20)
+
 
 # Создание виджетов интерфейса
 add_label = tk.Label(root, text="Add Task:")
-add_label.grid(row=1, column=0, pady=5, sticky='e')
+add_label.grid(row=1, column=0, pady=(0,20), sticky='e')
 
 entry = tk.Entry(root, width=30)
-entry.grid(row=1, column=1, pady=5)
+entry.grid(row=1, column=1, pady=(0,20))
 
 add_button = tk.Button(root, text="Add", width=10)
-add_button.grid(row=1, column=2, pady=5, sticky='w')
+add_button.grid(row=1, column=2, pady=(0,20), sticky='w')
+
+
 add_button.bind("<Button-1>", create_task)
 entry.bind("<Return>", create_task)
 

@@ -4,7 +4,7 @@ import tkinter as tk
 
 def move_task(event, source_list, target_list=None):
 
-    try:
+    if source_list.curselection():
         # Получение выбранной задачи
         task = source_list.get(source_list.curselection())
         print(task)
@@ -12,9 +12,7 @@ def move_task(event, source_list, target_list=None):
         source_list.delete(source_list.curselection())
         if target_list:
             target_list.insert("end", task)
-    except Exception as e:
-        # print("Ошибка ", e)
-        print("Listbox пуст!")
+
 
 def create_task(event):
     # Добавление новой задачи в список "To Do"

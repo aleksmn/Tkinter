@@ -77,7 +77,7 @@ class TimerFrame(ctk.CTkFrame):
         if not self.stop_loop:
             self.time_label.configure(text="00:00:00")
             print('Таймер закончен!')
-            playsound(dir_path+"\\alarm.wav")
+            playsound(dir_path+"/alarm.wav")
             
 
     def stop(self):

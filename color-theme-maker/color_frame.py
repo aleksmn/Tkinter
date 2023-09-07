@@ -1,9 +1,6 @@
 import tkinter as tk
 import customtkinter as ctk
 
-
-ctk.set_appearance_mode("light")
-
 # Fonts and Colors
 my_font = ('sans-serif', 14)
 primary_color = 'slateblue'
@@ -33,20 +30,20 @@ class ColorFrame(ctk.CTkFrame):
         # RED
         self.red_label = ctk.CTkLabel(self, text="R")
         self.red_slider = ctk.CTkSlider(
-            self, from_=0, to=255, orientation='horizontal', command=self.get_red)
+            self, from_=0, to=255, orientation='horizontal', command=lambda value: self.get_value(value, 'red'))
         self.red_label = ctk.CTkLabel(self, text="R")
         self.red_slider.set(0)
 
         # GREEN
         self.green_label = ctk.CTkLabel(self, text="G")
         self.green_slider = ctk.CTkSlider(
-            self, from_=0, to=255, orientation='horizontal', command=self.get_green)
+            self, from_=0, to=255, orientation='horizontal', command=lambda value: self.get_value(value, 'green'))
         self.green_slider.set(0)
 
         # BLUE
         self.blue_label = ctk.CTkLabel(self, text="B")
         self.blue_slider = ctk.CTkSlider(
-            self, from_=0, to=255, orientation='horizontal', command=self.get_blue)
+            self, from_=0, to=255, orientation='horizontal', command=lambda value: self.get_value(value, 'blue'))
         self.blue_slider.set(0)
 
         # Размещаем все элементы:
@@ -60,29 +57,25 @@ class ColorFrame(ctk.CTkFrame):
         self.blue_label.grid(row=4, column=0, sticky='W', padx=(5, 0))
         self.blue_slider.grid(row=4, column=1, sticky='W', padx=5)
 
-    def get_red(self, value):
+    def get_value(self, value, color):
         """Get current value for red and update color box"""
-        self.red_value = hex(int(value))
-        self.red_value = self.red_value.lstrip('0x')
-        self.red_value = self.red_value.zfill(2)
-        # print(f'{self.red_value=}')
+
+        # print(value, color)
+        value = hex(int(value))
+        value = value.lstrip('0x')
+        value = value.zfill(2)
+
+        if color == 'red':
+            self.red_value = value
+        if color == 'green':
+            self.green_value = value
+        if color == 'blue':
+            self.blue_value = value
+        
+
         self.update_color()
 
-    def get_green(self, value):
-        """Get current value for green and update color box"""
-        self.green_value = hex(int(value))
-        self.green_value = self.green_value.lstrip('0x')
-        self.green_value = self.green_value.zfill(2)
-        # print(f'{self.green_value=}')
-        self.update_color()
 
-    def get_blue(self, value):
-        """Get current value for blue and update color box"""
-        self.blue_value = hex(int(value))
-        self.blue_value = self.blue_value.lstrip('0x')
-        self.blue_value = self.blue_value.zfill(2)
-        # print(f'{self.blue_value=}')
-        self.update_color()
 
     def update_color(self):
         # print(red_value, green_value, blue_value)

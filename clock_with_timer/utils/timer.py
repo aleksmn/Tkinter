@@ -62,19 +62,23 @@ class TimerFrame(ctk.CTkFrame):
         full_seconds = hours * 3600 + minutes * 60 + seconds
 
         while full_seconds > 0 and not self.stop_loop:
-            full_seconds -= 1
-
+            
             minutes, seconds = divmod(full_seconds, 60)
             hours, minutes = divmod(minutes, 60)
 
             self.time_label.configure(
                 text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
-            self.update()
+            
+            full_seconds -= 1
             time.sleep(1)
+            self.update()
+            
 
         if not self.stop_loop:
-            # print('Таймер закончен!')
-            playsound(dir_path+"/alarm.wav")
+            self.time_label.configure(text="00:00:00")
+            print('Таймер закончен!')
+            playsound(dir_path+"\\alarm.wav")
+            
 
     def stop(self):
         self.stop_loop = True

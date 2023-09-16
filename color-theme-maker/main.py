@@ -56,6 +56,8 @@ class App(ctk.CTk):
         self.configure(menu=self.menu)
         self.menu.add_command(label='Сохранить', command=self.save_colors)
 
+        self.load_colors()
+
 
     def save_colors(self):
 
@@ -67,6 +69,18 @@ class App(ctk.CTk):
                 f.write(cf.get_color() + '\n')
 
         print("Сохранено в файл " + dir_path + '/my_colors.txt')
+
+
+    def load_colors(self):
+        try:
+            with open(dir_path + '/my_colors.txt', 'r', encoding='utf-8') as f:
+                data = f.read()
+                colors = data.split()
+                for i, cf in enumerate(self.color_frames):
+                    cf.set_color(colors[i])
+        except:
+            pass
+
 
         
 

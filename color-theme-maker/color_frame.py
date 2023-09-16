@@ -88,11 +88,24 @@ class ColorFrame(ctk.CTkFrame):
         return self.selected_color
 
 
+    def set_color(self, color):
+
+        r, g, b = color[1:3], color[3:5], color[5:7]
+        self.red_value, self.green_value, self.blue_value = r, g, b
+
+        self.red_slider.set(int(r, 16))
+        self.green_slider.set(int(g, 16))
+        self.blue_slider.set(int(b, 16))
+
+        self.update_color()
 
 
 if __name__ == "__main__":
 
     app = ctk.CTk()
     app.title('Color')
-    cf = ColorFrame(app).grid(column=0, row=0)
+    cf = ColorFrame(app)
+    cf.grid(column=0, row=0)
+    cf.set_color('#660000')
+    print(cf)
     app.mainloop()

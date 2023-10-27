@@ -4,12 +4,15 @@ import tkinter as tk
 
 def move_task(event, source_list, target_list=None):
 
-    if source_list.curselection():
+    selected = source_list.curselection()
+    print(selected)
+
+    if selected:
         # Получение выбранной задачи
-        task = source_list.get(source_list.curselection())
+        task = source_list.get(selected)
         print(task)
         # Перемещение задачи из одной доски в другую
-        source_list.delete(source_list.curselection())
+        source_list.delete(selected)
         if target_list:
             target_list.insert("end", task)
 
@@ -51,8 +54,10 @@ add_button = tk.Button(root, text="Add", width=10)
 add_button.grid(row=1, column=2, pady=(0,20), sticky='w')
 
 
+# События
 add_button.bind("<Button-1>", create_task)
 entry.bind("<Return>", create_task)
+
 
 # Привязка событий перемещения задачи между списками
 todo_list.bind("<<ListboxSelect>>", lambda e: move_task(e, todo_list, in_progress_list))

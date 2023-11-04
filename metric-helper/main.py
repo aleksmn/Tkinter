@@ -48,7 +48,7 @@ def convert():
 
     try:
         start_value = float(input_field.get())
-    
+
     except:
         print('Неверный ввод')
         return
@@ -57,7 +57,6 @@ def convert():
     end_prefix = output_combobox.get()
 
     print(start_value, start_prefix, end_prefix)
-
 
     # Переводим в основную величину, без префикса (граммы, метры)
     base_value = start_value * metric_values[start_prefix]
@@ -69,14 +68,14 @@ def convert():
     output_field.insert(0, str(end_value))
 
 
-
-
 # Определяем разметку окна
 
 # Создаем поля ввода и вывода
 
-input_field = ctk.CTkEntry(
-    root, width=190, font=field_font, placeholder_text="Enter value")
+input_field = ctk.CTkEntry(root,
+                           width=190,
+                           font=field_font,
+                           placeholder_text="Enter value")
 
 output_field = ctk.CTkEntry(root, width=190, font=field_font)
 
@@ -93,14 +92,22 @@ metric_list = ['femto', 'pico', 'nano', 'micro', 'milli', 'centi', 'deci',
                'base value', 'deca', 'hecto', 'kilo', 'mega', 'giga', 'tera', 'peta']
 
 
-input_combobox = ctk.CTkComboBox(
-    root, width=190, values=metric_list, font=field_font, justify='left', button_color=secondary_color)
+input_combobox = ctk.CTkComboBox(root, 
+                                width=190, 
+                                values=metric_list, 
+                                font=field_font, 
+                                justify='left',
+                                button_color=secondary_color,
+                                button_hover_color=primary_color)
 
 
-
-output_combobox = ctk.CTkComboBox(
-    root, width=190, values=metric_list, font=field_font, justify='left', button_color=secondary_color)
-
+output_combobox = ctk.CTkComboBox(root, 
+                                width=190, 
+                                values=metric_list, 
+                                font=field_font, 
+                                justify='left', 
+                                button_color=secondary_color,
+                                button_hover_color=primary_color)
 
 to_label = ctk.CTkLabel(root, text="to", font=field_font)
 
@@ -114,14 +121,13 @@ input_combobox.set('base value')
 output_combobox.set('base value')
 
 
-
 # Кнопка перевода величин
-convert_button = ctk.CTkButton(root, 
-                                text='Convert', 
-                                font=field_font, 
-                                fg_color=primary_color, 
-                                hover_color=secondary_color,
-                                command=convert)
+convert_button = ctk.CTkButton(root,
+                               text='Convert',
+                               font=field_font,
+                               fg_color=primary_color,
+                               hover_color=secondary_color,
+                               command=convert)
 
 
 convert_button.grid(row=2, column=0, columnspan=3, padx=10, pady=10, ipadx=50)

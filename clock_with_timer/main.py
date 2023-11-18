@@ -5,8 +5,8 @@ import locale
 import os
 
 
-from utils.clock import ClockFrame
-from utils.timer import TimerFrame
+from clock import ClockFrame
+from timer import TimerFrame
 
 # Путь к папке запуска программы
 dir_path = os.path.dirname(os.path.realpath(__file__))

@@ -1,4 +1,6 @@
 import tkinter as tk
+import ttkbootstrap as ttk
+from ttkbootstrap.constants import *
 
 # Функции
 
@@ -26,14 +28,18 @@ def create_task(event):
 
 
 # Создание главного окна
-root = tk.Tk()
+root = ttk.Window()
+style = ttk.Style("flatly")
+
+FONT = ("monospace", 10)
+
 root.title("Kanban Board")
 root.resizable(0, 0)
 
 # Создание списков задач
-todo_list = tk.Listbox(root, height=10, width=30)
-in_progress_list = tk.Listbox(root, height=10, width=30)
-done_list = tk.Listbox(root, height=10, width=30)
+todo_list = tk.Listbox(root, height=10, width=30, font=FONT)
+in_progress_list = tk.Listbox(root, height=10, width=30, font=FONT)
+done_list = tk.Listbox(root, height=10, width=30, font=FONT)
 
 
 
@@ -44,13 +50,13 @@ done_list.grid(row=0, column=2, padx=(0, 20), pady=20)
 
 
 # Создание виджетов интерфейса
-add_label = tk.Label(root, text="Add Task:")
-add_label.grid(row=1, column=0, pady=(0,20), sticky='e')
+add_label = ttk.Label(root, text="Add Task:", font=FONT)
+add_label.grid(row=1, column=0, pady=(0,20), padx=(0, 20), sticky='e')
 
-entry = tk.Entry(root, width=30)
-entry.grid(row=1, column=1, pady=(0,20))
+entry = ttk.Entry(root, width=30)
+entry.grid(row=1, column=1, pady=(0,20), padx=(0, 20), sticky="ew")
 
-add_button = tk.Button(root, text="Add", width=10)
+add_button = ttk.Button(root, text="Add", width=10)
 add_button.grid(row=1, column=2, pady=(0,20), sticky='w')
 
 

@@ -1,6 +1,5 @@
 import tkinter as tk
 import ttkbootstrap as ttk
-from ttkbootstrap.constants import *
 
 # Функции
 
@@ -28,8 +27,7 @@ def create_task(event):
 
 
 # Создание главного окна
-root = ttk.Window()
-style = ttk.Style("flatly")
+root = ttk.Window(themename="flatly")
 
 FONT = ("monospace", 10)
 

@@ -1,6 +1,9 @@
 import ttkbootstrap as ttk
 import time
+import os
+from playsound import playsound
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 
 
@@ -50,7 +53,7 @@ class TimerFrame(ttk.Frame):
         # Получаем общее кол-во секунд
         full_seconds = hours * 3600 + minutes * 60 + seconds
 
-        while full_seconds >= 0 and not self.stop_loop:
+        while full_seconds > 0 and not self.stop_loop:
             
             minutes = full_seconds // 60
             seconds = full_seconds % 60
@@ -70,8 +73,9 @@ class TimerFrame(ttk.Frame):
 
         if not self.stop_loop:
             self.time_label.configure(text="00:00:00")
-            # print('Таймер закончен!')
-            # playsound(dir_path+"/alarm.wav")
+            self.update()
+            print('Таймер закончен!')
+            playsound(dir_path+"/alarm.wav")
 
 
     def stop(self):

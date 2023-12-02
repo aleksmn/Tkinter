@@ -1,12 +1,9 @@
 import ttkbootstrap as ttk
 import threading
 import time
-import os
 from playsound import playsound
 
-
-# Найдем путь к папке с проектом
-dir_path = os.path.dirname(os.path.realpath(__file__))
+#  pip install playsound==1.2.2
 
 # Создаем класс для таймера
 class TimerFrame(ttk.Frame):
@@ -74,12 +71,10 @@ class TimerFrame(ttk.Frame):
             full_seconds -= 1
             
             
-
         if not self.stop_loop:
             self.time_label.configure(text="00:00:00")
             self.update()
-            print('Таймер закончен!')
-            playsound(dir_path+"/alarm.wav")
+            playsound(u"alarm.wav")
 
 
     def stop(self):

@@ -6,19 +6,19 @@ class ClockFrame(ttk.Frame):
         super().__init__(container)
 
         # Fonts
-        primary_font = ('monospace', 18)
-        secondary_font = ('monospace', 64)
+        primary_font = ('monospace', 12)
+        secondary_font = ('monospace', 40)
 
         # 1) time
-        self.time_label = ttk.Label(self, text="12:00", font=secondary_font, bootstyle="primary")
+        self.time_label = ttk.Label(self, text="12:00", font=secondary_font, bootstyle="info")
         self.time_label.grid(row=0, column=0, columnspan=2)
 
         # 2) day
-        self.day_label = ttk.Label(self, text="Sunday", font=primary_font, bootstyle="danger")
+        self.day_label = ttk.Label(self, text="Sunday", font=primary_font)
         self.day_label.grid(row=1, column=0)
 
         # 3) date
-        self.date_label = ttk.Label(self, text="19.11.2023", font=primary_font, bootstyle="danger")
+        self.date_label = ttk.Label(self, text="19.11.2023", font=primary_font)
         self.date_label.grid(row=1, column=1)
 
         self.update()

@@ -21,13 +21,13 @@ def show_article():
 
         # Очистка окна и добавление названия и текста статьи
         title_label.config(text=title)
-        title_label.grid()
-        text.grid()
-        back_button.grid()
-        listbox.grid_forget()
-        delete_button.grid_forget()
-        read_button.grid_forget()
-        add_button.grid_forget()
+        title_label.pack()
+        text.pack()
+        back_button.pack()
+        listbox.pack_forget()
+        delete_button.pack_forget()
+        read_button.pack_forget()
+        add_button.pack_forget()
 
 
 # Функция для возврата к списку статей
@@ -38,13 +38,13 @@ def go_back():
     # Очистка текста статьи и названия, отображение списка статей
     text.delete(1.0, tk.END)
     title_label.config(text="")
-    listbox.grid()
-    text.grid_forget()
-    title_label.grid_forget()
-    back_button.grid_forget()
-    read_button.grid()
-    add_button.grid()
-    delete_button.grid()
+    listbox.pack(fill=tk.BOTH)
+    text.pack_forget()
+    title_label.pack_forget()
+    back_button.pack_forget()
+    read_button.pack()
+    add_button.pack()
+    delete_button.pack()
 
 
 # Функция для удаления статьи
@@ -80,17 +80,17 @@ def add_article():
     add_window.title("Добавить статью")
 
     label_title = tk.Label(add_window, text="Введите название статьи:")
-    label_title.grid()
+    label_title.pack()
     entry_title = tk.Entry(add_window)
-    entry_title.grid()
+    entry_title.pack()
 
     label_text = tk.Label(add_window, text="Введите текст статьи:")
-    label_text.grid()
+    label_text.pack()
     text = tk.Text(add_window, wrap=tk.WORD)
-    text.grid()
+    text.pack()
 
     save_button = tk.Button(add_window, text="Сохранить", command=save_new_article)
-    save_button.grid()
+    save_button.pack()
 
 
 # Создание окна
@@ -100,7 +100,7 @@ root.geometry("600x500")  # Фиксированный размер окна
 
 # Создание списка статей
 listbox = tk.Listbox(root)
-listbox.grid(column=0, row=0, sticky="we")
+listbox.pack(fill=tk.BOTH)
 
 # Заполнение списка статьями
 for article in articles:
@@ -108,29 +108,29 @@ for article in articles:
 
 # Создание текстового виджета для отображения текста статьи (изначально скрыт)
 text = tk.Text(root, wrap=tk.WORD)
-text.grid(column=0, row=1)
-text.grid_forget()
+text.pack()
+text.pack_forget()
 
 # Создание виджета Label для отображения названия статьи (изначально скрыт)
 title_label = tk.Label(root, text="", font=("Helvetica", 14))
-title_label.grid(column=0, row=1)
-title_label.grid_forget()
+title_label.pack()
+title_label.pack_forget()
 
 # Создание кнопки "Назад" (изначально скрытой)
 back_button = tk.Button(root, text="Назад", command=go_back)
-back_button.grid(column=1, row=1)
-back_button.grid_forget()
+back_button.pack()
+back_button.pack_forget()
 
 # Создание кнопки "Прочитать"
 read_button = tk.Button(root, text="Прочитать", command=show_article)
-read_button.grid(column=2, row=1)
+read_button.pack()
 
 # Создание кнопки "Добавить статью"
 add_button = tk.Button(root, text="Добавить статью", command=add_article)
-add_button.grid(column=3, row=1)
+add_button.pack()
 
 delete_button = tk.Button(root, text="Удалить статью", command=delete_article)
-delete_button.grid(column=4, row=1)
+delete_button.pack()
 
 # Запуск приложения
 root.mainloop()

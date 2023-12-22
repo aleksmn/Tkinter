@@ -96,11 +96,12 @@ def add_article():
 # Создание окна
 root = tk.Tk()
 root.title("Кошко-вики")
-root.geometry("600x500")  # Фиксированный размер окна
+# root.geometry("600x500")  # Фиксированный размер окна
+root.resizable(0, 0)
 
 # Создание списка статей
 listbox = tk.Listbox(root)
-listbox.grid(column=0, row=0, sticky="we")
+listbox.grid(column=0, row=0, columnspan=3, sticky="we")
 
 # Заполнение списка статьями
 for article in articles:
@@ -113,7 +114,7 @@ text.grid_forget()
 
 # Создание виджета Label для отображения названия статьи (изначально скрыт)
 title_label = tk.Label(root, text="", font=("Helvetica", 14))
-title_label.grid(column=0, row=1)
+title_label.grid(column=0, row=0)
 title_label.grid_forget()
 
 # Создание кнопки "Назад" (изначально скрытой)
@@ -123,14 +124,14 @@ back_button.grid_forget()
 
 # Создание кнопки "Прочитать"
 read_button = tk.Button(root, text="Прочитать", command=show_article)
-read_button.grid(column=2, row=1)
+read_button.grid(column=0, row=1)
 
 # Создание кнопки "Добавить статью"
 add_button = tk.Button(root, text="Добавить статью", command=add_article)
-add_button.grid(column=3, row=1)
+add_button.grid(column=1, row=1)
 
 delete_button = tk.Button(root, text="Удалить статью", command=delete_article)
-delete_button.grid(column=4, row=1)
+delete_button.grid(column=2, row=1)
 
 # Запуск приложения
 root.mainloop()

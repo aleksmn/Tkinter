@@ -1,6 +1,7 @@
-import tkinter as tk
+import ttkbootstrap as ttk
 import file_connection
-from tkinter import messagebox
+from tkinter import messagebox, Listbox
+
 
 # Содержимое статей (названия и текст статей)
 articles = file_connection.get_articles()
@@ -16,8 +17,8 @@ def show_article():
         current_article = title
 
         # Очистка окна и добавление текста статьи
-        text.delete(1.0, tk.END)
-        text.insert(tk.END, articles[title])
+        text.delete(1.0, 'end')
+        text.insert('end', articles[title])
 
         # Очистка окна и добавление названия и текста статьи
         title_label.config(text=title)
@@ -36,15 +37,15 @@ def go_back():
     current_article = None
 
     # Очистка текста статьи и названия, отображение списка статей
-    text.delete(1.0, tk.END)
+    text.delete(1.0, 'end')
     title_label.config(text="")
-    listbox.grid()
+    listbox.grid(column=0, row=0, columnspan=3, sticky="we")
     text.grid_forget()
     title_label.grid_forget()
     back_button.grid_forget()
-    read_button.grid()
-    add_button.grid()
-    delete_button.grid()
+    read_button.grid(column=0, row=1)
+    add_button.grid(column=1, row=1)
+    delete_button.grid(column=2, row=1)
 
 
 # Функция для удаления статьи
@@ -68,7 +69,7 @@ def add_article():
 
     def save_new_article():
         new_title = entry_title.get()
-        new_text = text.get("1.0", tk.END)
+        new_text = text.get("1.0", 'end')
         if new_title and new_text:
             articles[new_title] = new_text
             listbox.insert(0, new_title)
@@ -76,61 +77,61 @@ def add_article():
             add_window.destroy()
             show_article()
 
-    add_window = tk.Toplevel(root)
+    add_window = ttk.Toplevel(root)
     add_window.title("Добавить статью")
 
-    label_title = tk.Label(add_window, text="Введите название статьи:")
+    label_title = ttk.Label(add_window, text="Введите название статьи:")
     label_title.grid()
-    entry_title = tk.Entry(add_window)
+    entry_title = ttk.Entry(add_window)
     entry_title.grid()
 
-    label_text = tk.Label(add_window, text="Введите текст статьи:")
+    label_text = ttk.Label(add_window, text="Введите текст статьи:")
     label_text.grid()
-    text = tk.Text(add_window, wrap=tk.WORD)
+    text = ttk.Text(add_window, wrap='word')
     text.grid()
 
-    save_button = tk.Button(add_window, text="Сохранить", command=save_new_article)
+    save_button = ttk.Button(add_window, text="Сохранить", command=save_new_article)
     save_button.grid()
 
 
 # Создание окна
-root = tk.Tk()
+root = ttk.Window(themename="flatly")
 root.title("Кошко-вики")
-# root.geometry("600x500")  # Фиксированный размер окна
 root.resizable(0, 0)
+root.configure(padx=20, pady=20)
 
 # Создание списка статей
-listbox = tk.Listbox(root)
+listbox = Listbox(root)
 listbox.grid(column=0, row=0, columnspan=3, sticky="we")
 
 # Заполнение списка статьями
 for article in articles:
-    listbox.insert(tk.END, article)
+    listbox.insert('end', article)
 
 # Создание текстового виджета для отображения текста статьи (изначально скрыт)
-text = tk.Text(root, wrap=tk.WORD)
+text = ttk.Text(root, wrap='word')
 text.grid(column=0, row=1)
 text.grid_forget()
 
 # Создание виджета Label для отображения названия статьи (изначально скрыт)
-title_label = tk.Label(root, text="", font=("Helvetica", 14))
+title_label = ttk.Label(root, text="", font=("Helvetica", 14))
 title_label.grid(column=0, row=0)
 title_label.grid_forget()
 
 # Создание кнопки "Назад" (изначально скрытой)
-back_button = tk.Button(root, text="Назад", command=go_back)
+back_button = ttk.Button(root, text="Назад", command=go_back)
 back_button.grid(column=1, row=1)
 back_button.grid_forget()
 
 # Создание кнопки "Прочитать"
-read_button = tk.Button(root, text="Прочитать", command=show_article)
+read_button = ttk.Button(root, text="Прочитать", command=show_article)
 read_button.grid(column=0, row=1)
 
 # Создание кнопки "Добавить статью"
-add_button = tk.Button(root, text="Добавить статью", command=add_article)
+add_button = ttk.Button(root, text="Добавить статью", command=add_article)
 add_button.grid(column=1, row=1)
 
-delete_button = tk.Button(root, text="Удалить статью", command=delete_article)
+delete_button = ttk.Button(root, text="Удалить статью", command=delete_article)
 delete_button.grid(column=2, row=1)
 
 # Запуск приложения

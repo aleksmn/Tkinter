@@ -6,16 +6,16 @@ from datetime import datetime
 
 
 class ClockFrame(ctk.CTkFrame):
-    def __init__(self, container, primary_color=None, tz=None, title=None):
+    def __init__(self, container, tz=None, title=None):
         super().__init__(container)
 
         self.tz = tz
 
         # Настраиваем цвет по умолчанию, то есть, если цвет не передан в качестве аргумента
-        primary_color = "darkorchid1" if primary_color == None else primary_color
+        primary_color = "darkorchid1"
         secondary_color = "#39B5E0"
-        primary_font = 'monospace', 28
-        secondary_font = 'monospace', 100
+        primary_font = 'monospace', 18
+        secondary_font = 'monospace', 40
 
         self.configure(fg_color="transparent")
 
@@ -40,8 +40,8 @@ class ClockFrame(ctk.CTkFrame):
                                        text_color=secondary_color)
 
         self.time_label.grid(row=1, column=0, columnspan=2)
-        self.day_label.grid(row=2, column=0, sticky='e', padx=20)
-        self.date_label.grid(row=2, column=1, sticky='w', padx=20)
+        self.day_label.grid(row=2, column=0)
+        self.date_label.grid(row=2, column=1)
 
         self.update()
 
@@ -84,13 +84,11 @@ class App(ctk.CTk):
         self.clock_frame.grid(column=0, row=0, padx=40, pady=40)
 
         self.clock_frame2 = ClockFrame(self,
-                                       primary_color='magenta',
                                        tz='Asia/Novosibirsk',
                                        title='Новосибирск')
         self.clock_frame2.grid(column=0, row=2, padx=40, pady=40)
 
         self.clock_frame3 = ClockFrame(self,
-                                       primary_color='cyan',
                                        tz='Asia/Vladivostok',
                                        title='Владивосток')
         self.clock_frame3.grid(column=0, row=3, padx=40, pady=40)

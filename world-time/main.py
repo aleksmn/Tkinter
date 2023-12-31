@@ -74,8 +74,7 @@ class App(ttk.Window):
         self.configure(padx=10, pady=10)
         self.resizable(0, 0)
 
-        self.iconbitmap('icon.ico')
-
+    
         self.clock_list = []
 
         for item in TIMEZONES:
@@ -88,6 +87,12 @@ class App(ttk.Window):
                 row_num += 1
 
             clock.grid(row=row_num, column=i%4, padx=30, pady=30)
+
+
+        
+        # Icon Image
+        self.iconbitmap('icon.ico')
+        
 
 
         

@@ -74,6 +74,8 @@ class App(ttk.Window):
         self.configure(padx=10, pady=10)
         self.resizable(0, 0)
 
+        self.iconbitmap('icon.ico')
+
         self.clock_list = []
 
         for item in TIMEZONES:
@@ -88,8 +90,7 @@ class App(ttk.Window):
             clock.grid(row=row_num, column=i%4, padx=30, pady=30)
 
 
-            
-
+        
 # Запуск программы
 if __name__ == "__main__":
     app = App(title="World Time", themename=THEMENAME)

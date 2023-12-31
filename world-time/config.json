@@ -1,4 +1,6 @@
-{
+{   
+    "themename": "minty",
+
     "timezones": [
         {
             "title": "Москва",

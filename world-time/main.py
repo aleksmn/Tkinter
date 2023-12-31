@@ -3,10 +3,11 @@ from pytz import timezone
 from datetime import datetime
 import json
 
-with open("timezones.json", "r", encoding="utf-8") as file:
-    data = json.load(file)
+with open("config.json", "r", encoding="utf-8") as file:
+    config = json.load(file)
 
-TIMEZONES = data["timezones"]
+TIMEZONES = config["timezones"]
+THEMENAME = config["themename"]
 
 class ClockFrame(ttk.Frame):
     def __init__(self, container, tz=None, title=None):
@@ -26,7 +27,7 @@ class ClockFrame(ttk.Frame):
             self.title_label.grid(row=0, column=0, columnspan=2)
 
         # time
-        self.time_label = ttk.Label(self, text="12:00", font=secondary_font, bootstyle="warning")
+        self.time_label = ttk.Label(self, text="12:00", font=secondary_font, bootstyle="primary")
         self.time_label.grid(row=1, column=0, columnspan=2)
 
         # day
@@ -91,5 +92,5 @@ class App(ttk.Window):
 
 # Запуск программы
 if __name__ == "__main__":
-    app = App(title="World Time", themename='vapor')
+    app = App(title="World Time", themename=THEMENAME)
     app.mainloop()

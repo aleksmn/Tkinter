@@ -1,0 +1,54 @@
+{
+    "timezones": [
+        {
+            "title": "Москва",
+            "tz": "Europe/Moscow"
+        },
+        {
+            "title": "Самара",
+            "tz": "Europe/Samara"
+        },
+        {
+            "title": "Новосибирск",
+            "tz": "Asia/Novosibirsk"
+        },
+        {
+            "title": "Владивосток",
+            "tz": "Asia/Vladivostok"
+        },
+        {
+            "title": "",
+            "tz": "Europe/London"
+        },
+        {
+            "title": "",
+            "tz": "Europe/Rome"
+        },
+        {
+            "title": "",
+            "tz": "Europe/Kaliningrad"
+        },
+        {
+            "title": "",
+            "tz": "Europe/Istanbul"
+        },
+    
+        {
+            "title": "",
+            "tz": "America/New_York"
+        },
+        {
+            "title": "",
+            "tz": "America/Sao_Paulo"
+        },
+        {
+            "title": "",
+            "tz": "Japan"
+        },
+        {
+            "title": "",
+            "tz": "Australia/Sydney"
+        }
+        
+    ]
+}

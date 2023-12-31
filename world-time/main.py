@@ -1,60 +1,12 @@
 import ttkbootstrap as ttk
 from pytz import timezone
 from datetime import datetime
+import json
 
-TIMEZONES = [
-    {
-        "title": "Москва",
-        "tz": "Europe/Moscow"
-    },
-    {
-        "title": "Самара",
-        "tz": "Europe/Samara"
-    },
-    {
-        "title": "Новосибирск",
-        "tz": "Asia/Novosibirsk"
-    },
-    {
-        "title": "Владивосток",
-        "tz": "Asia/Vladivostok"
-    },
-    {
-        "title": "",
-        "tz": "Europe/London"
-    },
-    {
-        "title": "",
-        "tz": "Europe/Rome"
-    },
-    {
-        "title": "",
-        "tz": "Europe/Kaliningrad"
-    },
-    {
-        "title": "",
-        "tz": "Europe/Istanbul"
-    },
+with open("timezones.json", "r", encoding="utf-8") as file:
+    data = json.load(file)
 
-    {
-        "title": "",
-        "tz": "America/New_York"
-    },
-    {
-        "title": "",
-        "tz": "America/Sao_Paulo"
-    },
-    {
-        "title": "",
-        "tz": "Japan"
-    },
-    {
-        "title": "",
-        "tz": "Australia/Sydney"
-    }
-    
-]
-
+TIMEZONES = data["timezones"]
 
 class ClockFrame(ttk.Frame):
     def __init__(self, container, tz=None, title=None):

@@ -21,6 +21,10 @@ class App(ttk.Window):
         self.timer2 = TimerFrame(self)
         self.timer2.grid(row=2, column=0, pady=(20, 0))
 
+
+        # Icon Image
+        self.iconbitmap('icon.ico')
+
 if __name__ == "__main__":
-    app = App(title="Best Timer", themename='superhero')
+    app = App(title="Best Timer", themename='vapor')
     app.mainloop()

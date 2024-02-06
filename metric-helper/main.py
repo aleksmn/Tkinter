@@ -1,21 +1,8 @@
-# Metric Helper
-import customtkinter as ctk
 import ttkbootstrap as ttk
-
-# Настраиваем тему
-# ctk.set_appearance_mode("light")
-
-# Создаем окно
-# root = ctk.CTk()
-root = ttk.Window(
-        title="Metric Helper",
-        themename="superhero", 
-        resizable=(False, False)
-    )
+# tkinter
 
 
 # Функции
-
 def convert():
     """Переводим одну величину в другую"""
 
@@ -67,10 +54,17 @@ def convert():
     output_field.insert(0, str(end_value))
     output_field.configure(state="readonly")
 
-# Определяем разметку окна
+
+
+# Создаем окно
+root = ttk.Window(
+        title="Metric Helper",
+        themename="cyborg", 
+        resizable=(False, False)
+    )
+
 
 # Создаем поля ввода и вывода
-
 input_field = ttk.Entry(root, style="primary")
 
 output_field = ttk.Entry(root, state="readonly")
@@ -82,21 +76,14 @@ input_field.grid(row=0, column=0, padx=10, pady=10, sticky="we")
 equal_label.grid(row=0, column=1, padx=10, pady=10)
 output_field.grid(row=0, column=2, padx=10, pady=10,  sticky="we")
 
-
 # Комбобокс
 metric_list = ['femto', 'pico', 'nano', 'micro', 'milli', 'centi', 'deci',
                'base value', 'deca', 'hecto', 'kilo', 'mega', 'giga', 'tera', 'peta']
 
 
-input_combobox = ttk.Combobox(root ,
-                                values=metric_list, 
-                                justify='left')
+input_combobox = ttk.Combobox(root, values=metric_list)
 
-
-output_combobox = ttk.Combobox(root, 
-                                 
-                                values=metric_list,  
-                                justify='left')
+output_combobox = ttk.Combobox(root, values=metric_list)
 
 to_label = ttk.Label(root, text="to")
 

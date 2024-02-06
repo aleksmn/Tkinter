@@ -71,7 +71,7 @@ def convert():
 
 # Создаем поля ввода и вывода
 
-input_field = ttk.Entry(root)
+input_field = ttk.Entry(root, style="primary")
 
 output_field = ttk.Entry(root, state="readonly")
 

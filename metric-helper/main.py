@@ -14,13 +14,6 @@ root = ttk.Window(
     )
 
 
-# # Определяем цвета и шрифт
-# field_font = ('sans-serif', 14)
-
-# primary_color = "purple"
-# secondary_color = "slateblue"
-
-
 # Функции
 
 def convert():
@@ -70,8 +63,9 @@ def convert():
     end_value = base_value / metric_values[end_prefix]
 
     # Обновляем вывод
+    output_field.configure(state="")
     output_field.insert(0, str(end_value))
-
+    output_field.configure(state="readonly")
 
 # Определяем разметку окна
 
@@ -79,7 +73,7 @@ def convert():
 
 input_field = ttk.Entry(root)
 
-output_field = ttk.Entry(root)
+output_field = ttk.Entry(root, state="readonly")
 
 equal_label = ttk.Label(root, text="=")
 

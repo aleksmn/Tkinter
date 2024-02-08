@@ -6,8 +6,6 @@ import ttkbootstrap as ttk
 def convert():
     """Переводим одну величину в другую"""
 
-    print('Конвертируем')
-
     metric_values = {
         'femto': 10**-15,
         'pico': 10**-12,
@@ -27,7 +25,9 @@ def convert():
     }
 
     # Очищаем вывод
+    output_field.configure(state="")
     output_field.delete(0, 'end')
+    output_field.configure(state="readonly")
 
     # Получаем информацию от пользователя
 
@@ -63,6 +63,7 @@ root = ttk.Window(
         resizable=(False, False)
     )
 
+root.configure(padx=20, pady=20)
 
 # Создаем поля ввода и вывода
 input_field = ttk.Entry(root, style="primary")

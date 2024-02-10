@@ -50,14 +50,13 @@ def go_back():
 
 # Функция для удаления статьи
 def delete_article():
-    global current_article, articles, listbox
+    global articles, listbox
     selected_index = listbox.curselection()
     if selected_index:
         title = listbox.get(selected_index)
-        current_article = title
         answer = messagebox.askyesno("Удаление", "Вы действительно хотите удалить эту статью?")
         if answer:
-            go_back()
+            # go_back()
             del articles[title]
             listbox.delete(selected_index)
             file_connection.delete_article(title)

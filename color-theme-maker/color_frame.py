@@ -1,10 +1,4 @@
-import tkinter as tk
 import customtkinter as ctk
-
-# Fonts and Colors
-my_font = ('sans-serif', 14)
-primary_color = 'slateblue'
-secondary_color = 'orange'
 
 class ColorFrame(ctk.CTkFrame):
 
@@ -107,5 +101,5 @@ if __name__ == "__main__":
     cf = ColorFrame(app)
     cf.grid(column=0, row=0)
     cf.set_color('#660000')
-    print(cf)
+    
     app.mainloop()

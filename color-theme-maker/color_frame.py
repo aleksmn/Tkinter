@@ -68,7 +68,7 @@ class ColorFrame(ctk.CTkFrame):
         if color == 'blue':
             self.blue_value = value
         
-
+        # Вызов функции
         self.update_color()
 
 
@@ -76,7 +76,9 @@ class ColorFrame(ctk.CTkFrame):
     def update_color(self):
         # print(red_value, green_value, blue_value)
         self.selected_color = f'#{self.red_value}{self.green_value}{self.blue_value}'
+        # Имзеняем цвет квадрата
         self.color_box.configure(fg_color=self.selected_color)
+        # Подставляем код цвета в поле для ввода
         self.color_hex.delete(0, 'end')
         self.color_hex.insert(0, self.selected_color)
 
@@ -102,6 +104,7 @@ if __name__ == "__main__":
     app.title('Color')
     cf = ColorFrame(app)
     cf.grid(column=0, row=0)
-    cf.set_color('#660000')
+    #
+    cf.set_color('#ff00ff')
     
     app.mainloop()

@@ -29,6 +29,7 @@ class App(ctk.CTk):
             pass
         
         self.configure(padx=10, pady=10)
+        self.resizable(0, 0)
 
         options = {'padx': 10, 'pady': 10}
 

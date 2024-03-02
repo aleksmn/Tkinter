@@ -17,7 +17,7 @@ class ColorFrame(ctk.CTkFrame):
         self.color_hex.insert('end', "#000000")
 
         self.color_box.grid(row=0, column=0, columnspan=2, padx=35, pady=10)
-        self.color_hex.grid(row=1, column=0, columnspan=2,)
+        self.color_hex.grid(row=1, column=0, columnspan=2)
 
         # Input frame.
 

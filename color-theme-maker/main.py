@@ -32,14 +32,19 @@ class App(ctk.CTk):
         self.configure(menu=self.menu)
         self.menu.add_command(label='Сохранить', command=self.save_colors)
         self.menu.add_command(label='Вернуть цвета', command=self.load_colors)
+
         self.load_colors()
+
+        # Добавляем действия на закрытие окна программы
+        self.protocol("WM_DELETE_WINDOW", self.on_closing)
 
 
     def save_colors(self):
 
         for cf in self.color_frames:
             print(cf.get_color())
-
+        
+        # Записываем в файл
         with open('my_colors.txt', 'w', encoding='utf-8') as f:
             for cf in self.color_frames:
                 f.write(cf.get_color() + '\n')
@@ -57,6 +62,13 @@ class App(ctk.CTk):
         except:
             pass
 
+
+    def on_closing(self):
+        # По закрытию окна 
+        # сохраняем цвета
+        self.save_colors()
+        # закрываем окно программы
+        self.destroy()
 
 
 

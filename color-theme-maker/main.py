@@ -59,8 +59,9 @@ class App(ctk.CTk):
                 colors = data.split()
                 for i, cf in enumerate(self.color_frames):
                     cf.set_color(colors[i])
-        except:
-            pass
+        except FileNotFoundError:
+            print("Файл с цветовой темой не найден")
+
 
 
     def on_closing(self):

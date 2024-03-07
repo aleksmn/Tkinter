@@ -49,7 +49,6 @@ def add_article():
             listbox.insert(0, new_title)
             file_connection.save_article(new_title, new_text)
             add_window.destroy()
-            show_article()
 
     add_window = ttk.Toplevel(root)
     add_window.title("Добавить статью")

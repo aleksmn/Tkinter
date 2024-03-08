@@ -34,7 +34,7 @@ def show_article():
         textbox.delete(1.0, 'end')
         textbox.insert('end', article_text)
         title_label.config(text=title)
-
+        textbox.configure(state="disabled")
 
 
 # Функция для добавления новой статьи

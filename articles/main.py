@@ -20,6 +20,7 @@ def show_article():
         # создаем окно для чтения статьи
         show_window = ttk.Toplevel(root)
         show_window.configure(padx=20, pady=20)
+        # show_window.geometry("+600+100")
 
         show_window.title(title)
         # Создание текстового виджета для отображения текста статьи

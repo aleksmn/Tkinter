@@ -52,11 +52,12 @@ def add_article():
 
     add_window = ttk.Toplevel(root)
     add_window.title("Добавить статью")
+    add_window.configure(padx=20, pady=20)
 
     label_title = ttk.Label(add_window, text="Введите название статьи:")
     label_title.grid()
     entry_title = ttk.Entry(add_window)
-    entry_title.grid()
+    entry_title.grid(sticky="we")
 
     label_text = ttk.Label(add_window, text="Введите текст статьи:")
     label_text.grid()

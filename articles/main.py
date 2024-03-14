@@ -6,11 +6,10 @@ import file_connection
 # Содержимое статей (названия и текст статей)
 articles = file_connection.get_articles()
 
-current_article = None
 
 # Функция для отображения выбранной статьи
 def show_article():
-    global current_article
+
     selected_index = listbox.curselection()
     if selected_index:
         title = listbox.get(selected_index)
@@ -21,16 +20,15 @@ def show_article():
         show_window = ttk.Toplevel(root)
         show_window.configure(padx=20, pady=20)
         # show_window.geometry("+600+100")
-
         show_window.title(title)
-        # Создание текстового виджета для отображения текста статьи
-        textbox = ttk.Text(show_window, wrap='word')
-        textbox.grid(column=0, row=1)
 
         # Создание виджета Label для отображения названия статьи
         title_label = ttk.Label(show_window, text="", font=("Helvetica", 14))
         title_label.grid(column=0, row=0)
 
+        # Создание текстового виджета для отображения текста статьи
+        textbox = ttk.Text(show_window, wrap='word')
+        textbox.grid(column=0, row=1)
 
         textbox.delete(1.0, 'end')
         textbox.insert('end', article_text)

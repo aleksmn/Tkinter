@@ -8,25 +8,29 @@ def get_articles():
 
 
 def save_article(name, text):
-    with open("articles.json", "r", encoding='utf-8') as file:
-        articles = json.load(file)
-
+    # Получим все статьи
+    articles = get_articles()
+    # Добавляем статью
     articles[name] = text
-    #                     w -  write - открыть файл для записи
-    with open("articles.json", "w", encoding='utf-8') as file:
-        json.dump(articles, file, ensure_ascii=False)
+    # Переписываем файл. w -  write - открыть файл для записи
+    with open("articles.json", "w", encoding='utf-8') as json_file:
+        json.dump(articles, json_file, ensure_ascii=False)
+
 
 
 def delete_article(name):
-    with open("articles.json", "r", encoding='utf-8') as file:
-        articles = json.load(file)
+    # Получим все статьи
+    articles = get_articles()
     # Удаляем статью
     del articles[name]
+    # Переписываем файл. w -  write - открыть файл для записи
+    with open("articles.json", "w", encoding='utf-8') as json_file:
+        json.dump(articles, json_file, ensure_ascii=False)
 
-    with open("articles.json", "w", encoding='utf-8') as file:
-        json.dump(articles, file, ensure_ascii=False)
 
 
 if __name__ == "__main__":
-    # save_article("test name", "my text qw er ty ytu uio")
-    delete_article("test name")
+    print(get_articles())
+
+    # save_article("Тестовая статья", "Тест тест тест")
+    # delete_article("Тестовая статья")

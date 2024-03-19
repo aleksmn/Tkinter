@@ -45,7 +45,7 @@ def add_article():
         new_text = text.get("1.0", 'end')
         if new_title and new_text:
             articles[new_title] = new_text
-            listbox.insert(0, new_title)
+            listbox.insert("end", new_title)
             file_connection.save_article(new_title, new_text)
             add_window.destroy()
 

@@ -15,7 +15,7 @@ articles = file_connection.get_articles()
 # Создание окна приложения
 # Темные темы: superhero darkly cyborg vapor
 # Светлые темы: flatly minty journal pulse morph
-root = ttk.Window(themename="morph")
+root = ttk.Window(themename="pulse")
 root.title("Кошко-вики")
 root.resizable(0, 0)
 root.configure(padx=20, pady=20)

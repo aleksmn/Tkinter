@@ -9,6 +9,52 @@ import file_connection
 articles = file_connection.get_articles()
 
 # Функции
+# Функция для отображения выбранной статьи
+def show_article():
+    selected_index = listbox.curselection()
+    if selected_index:
+        title = listbox.get(selected_index)
+        article_text = articles[title]
+
+        print(title, article_text)
+        # Создаем окно верхенго уровня
+        show_window = ttk.Toplevel(root)
+        show_window.title(title)
+        show_window.resizable(0, 0)
+        show_window.configure(padx=20, pady=20)
+
+        # Создание виджета Label для отображения названия статьи
+        title_label = ttk.Label(show_window, text=title, font=("Helvetica", 14))
+        title_label.grid(column=0, row=0)
+     
+        # Создание текстового виджета для отображения текста статьи
+        textbox = ttk.Text(show_window, wrap='word')
+        textbox.grid(column=0, row=1)
+        # Добавляем текст в виджет
+        textbox.insert('end', article_text)
+        textbox.configure(state="disabled")
+
+
+def add_article():
+    
+    add_window = ttk.Toplevel(root)
+    add_window.title("Добавить статью")
+    add_window.configure(padx=20, pady=20)
+
+    label_title = ttk.Label(add_window, text="Введите название статьи:")
+    label_title.grid()
+    # Поле для ввода названия
+    entry_title = ttk.Entry(add_window)
+    entry_title.grid(sticky="we")
+
+    label_text = ttk.Label(add_window, text="Введите текст статьи:")
+    label_text.grid()
+    text = ttk.Text(add_window, wrap='word')
+    text.grid()
+
+    # Кнопка для сохранения
+    save_button = 
+
 
 
 
@@ -30,7 +76,7 @@ for article in articles:
 
 # Добавим кнопки 
 # Кнопка Прочитать
-read_button = ttk.Button(root, text="Прочитать", style="info")
+read_button = ttk.Button(root, text="Прочитать", style="info", command=show_article)
 read_button.grid(column=0, row=1)
 
 # Кнопка Добавить статью

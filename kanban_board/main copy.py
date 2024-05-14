@@ -26,6 +26,12 @@ def create_task(event):
         entry.delete(0, "end")
 
 
+def load_tasks():
+    # получаем списки из json
+
+    # заполняем листбоксы
+    # listbox.insert("end", "что вставить")
+
 
 def save_tasks():
     tasks = {"to_do": [],
@@ -36,7 +42,6 @@ def save_tasks():
     tasks["to_do"] = todo_list.get(0, "end")
     tasks["in_progress"] = in_progress_list.get(0, "end")
     tasks["done"] = done_list.get(0, "end")
-
 
 
 

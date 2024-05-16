@@ -2,6 +2,11 @@ import tkinter as tk
 import ttkbootstrap as ttk
 import json
 
+# Запаковка в исполняемый файл
+# pip install auto-py-to-exe
+# выполняем команду
+# auto-py-to-exe
+
 # Функции
 
 def move_task(event, source_list, target_list=None):
@@ -81,7 +86,7 @@ def on_closing():
 
 
 # Создание главного окна
-root = ttk.Window(themename="flatly")
+root = ttk.Window(themename="superhero")
 
 FONT = ("monospace", 10, "bold")
 

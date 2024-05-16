@@ -1,6 +1,5 @@
 import tkinter as tk
 import ttkbootstrap as ttk
-import json
 
 # Функции
 
@@ -24,41 +23,6 @@ def create_task(event):
     if task:
         todo_list.insert("end", task)
         entry.delete(0, "end")
-
-
-def load_tasks():
-    # получаем списки из json
-
-    # заполняем листбоксы
-    # listbox.insert("end", "что вставить")
-
-
-def save_tasks():
-    tasks = {"to_do": [],
-             "in_progress": [],
-             "done": []}
-    
-    # Получаем списки задач
-    tasks["to_do"] = todo_list.get(0, "end")
-    tasks["in_progress"] = in_progress_list.get(0, "end")
-    tasks["done"] = done_list.get(0, "end")
-
-
-
-    with open("tasks.json", "w", encoding="utf-8") as json_file:
-        json.dump(tasks, json_file, ensure_ascii=False)
-
-
-
-
-def on_closing():
-
-    # Выполняем сохранение списков
-    save_tasks()
-
-    print("Выход из программы")
-    # Выход из программы
-    root.destroy()
 
 
 # Создание главного окна
@@ -110,16 +74,9 @@ entry.bind("<Return>", create_task)
 
 
 # Привязка событий перемещения задачи между списками
-todo_list.bind("<Double-Button-1>", lambda e: move_task(e, todo_list, in_progress_list))
-
-in_progress_list.bind("<Double-Button-1>", lambda e: move_task(e, in_progress_list, done_list))
-
-done_list.bind("<Double-Button-1>", lambda e: move_task(e, done_list))
-
-
-
-# Отслеживаем событие закрытие окна
-root.protocol("WM_DELETE_WINDOW", on_closing)
+todo_list.bind("<<ListboxSelect>>", lambda e: move_task(e, todo_list, in_progress_list))
+in_progress_list.bind("<<ListboxSelect>>", lambda e: move_task(e, in_progress_list, done_list))
+done_list.bind("<<ListboxSelect>>", lambda e: move_task(e, done_list))
 
 # Запуск главного цикла событий
 root.mainloop()

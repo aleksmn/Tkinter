@@ -10,41 +10,54 @@ articles = file_connection.get_articles()
 
 # Функции
 # Функция для отображения выбранной статьи
+# Функция для отображения выбранной статьи
 def show_article():
+
     selected_index = listbox.curselection()
-
-    
     if selected_index:
-        # определяем заголовок статьи
         title = listbox.get(selected_index)
-        
-        # получаем содержимое статьи из словаря articles
+        current_article = title
         article_text = articles[title]
-
-        # Создаем новое окно верхнего уровня
+        # print(title, article_text)
+        # создаем окно для чтения статьи
         show_window = ttk.Toplevel(root)
         show_window.configure(padx=20, pady=20)
-        show_window.resizable(0, 0)
+        # show_window.geometry("+600+100")
         show_window.title(title)
 
         # Создание виджета Label для отображения названия статьи
-        title_label = ttk.Label(show_window, text=title, font=('Helvetica', 14))
-        title_label.grid(row=0, column=0)
+        title_label = ttk.Label(show_window, text="", font=("Helvetica", 14))
+        title_label.grid(column=0, row=0)
 
         # Создание текстового виджета для отображения текста статьи
         textbox = ttk.Text(show_window, wrap='word')
-        textbox.grid(row=1, column=0)
+        textbox.grid(column=0, row=1)
 
-        # Вставляем текст
+        textbox.delete(1.0, 'end')
         textbox.insert('end', article_text)
-        # запрещаем редактирование
+        title_label.config(text=title)
         textbox.configure(state="disabled")
 
 
 # Функция для добавления новой статьи
 def add_article():
     global articles
-    
+    #1) Создаем окно верхнего уровня
+    add_window = ...
+
+    # 2) Добавим надпись Введите название статьи
+    label_title = ...
+
+    # 3) Поле для ввода названия (ttk.Entry)
+    entry_title = ...
+
+    # 4) Добавим надпись Введите текст статьи
+
+    # 5) Поле для ввода текста статьи (ttk.Text)
+
+    # 6) Кнопка Сохранить
+
+
 
 
 
@@ -66,7 +79,7 @@ for article in articles:
 
 # Добавим кнопки 
 # Кнопка Прочитать
-read_button = ttk.Button(root, text="Прочитать", style="info")
+read_button = ttk.Button(root, text="Прочитать", style="info", command=show_article)
 read_button.grid(column=0, row=1)
 
 # Кнопка Добавить статью

@@ -17,7 +17,7 @@ class TimerFrame(ttk.Frame):
         self.start_button = ttk.Button(self, text="Start", bootstyle="info", command=self.start)
         self.start_button.grid(row=0, column=1, padx=(0, 10))
 
-        self.stop_button = ttk.Button(self, text="Stop", bootstyle="danger")
+        self.stop_button = ttk.Button(self, text="Stop", bootstyle="danger", command=self.stop)
         self.stop_button.grid(row=1, column=1, padx=(0, 10), pady=(0, 10))
 
         self.time_label = ttk.Label(self, text="00:00:00", font=('monospace', 18))
@@ -57,10 +57,8 @@ class TimerFrame(ttk.Frame):
             minutes = full_seconds % 3600 // 60
             seconds = full_seconds % 60
 
-            
-
-            
-            self.time_label.configure(text=f"{hours}:{minutes}:{seconds}")
+            # Выводим оставшееся время на экран
+            self.time_label.configure(text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
 
             self.update()
             time.sleep(1)
@@ -71,9 +69,13 @@ class TimerFrame(ttk.Frame):
         if not self.stop_loop:
             self.time_label.configure(text="00:00:00")
             self.update()
+            # mixkit.com
             print("Время вышло")
+            playsound("alarm.wav")
 
-
+    def stop(self):
+        self.stop_loop = True
+        self.time_label.configure(text="00:00:00")
 
 
 

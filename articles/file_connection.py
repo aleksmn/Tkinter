@@ -2,9 +2,13 @@ import json
 
 
 def get_articles():
-    with open("articles.json", 'r', encoding='utf-8') as json_file:
-        articles_data = json.load(json_file)
-    return articles_data
+    try:
+        with open("articles.json", 'r', encoding='utf-8') as json_file:
+            articles_data = json.load(json_file)
+        return articles_data
+    
+    except FileNotFoundError:
+        return {}
 
 
 def save_article(name, text):

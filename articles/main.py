@@ -112,3 +112,10 @@ delete_button.grid(column=2, row=1)
 
 # Запуск приложения
 root.mainloop()
+
+
+# Запаковка в исполняемый файл
+# pip install auto-py-to-exe
+
+# Выполняем команду
+# auto-py-to-exe

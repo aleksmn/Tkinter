@@ -3,8 +3,19 @@ import file_connection
 from tkinter import messagebox, Listbox
 
 
+# Запаковка в исполняемый файл
+# pip install auto-py-to-exe
+
+# Выполняем команду
+# auto-py-to-exe
+
+
+
 # Содержимое статей (названия и текст статей)
 articles = file_connection.get_articles()
+
+
+
 
 current_article = None
 
@@ -50,13 +61,12 @@ def go_back():
 
 # Функция для удаления статьи
 def delete_article():
-    global articles, listbox
+    global articles
     selected_index = listbox.curselection()
     if selected_index:
         title = listbox.get(selected_index)
         answer = messagebox.askyesno("Удаление", "Вы действительно хотите удалить эту статью?")
         if answer:
-            # go_back()
             del articles[title]
             listbox.delete(selected_index)
             file_connection.delete_article(title)

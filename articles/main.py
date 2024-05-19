@@ -82,7 +82,7 @@ def delete_article():
             file_connection.delete_article(title)
 
 # Создание окна
-root = ttk.Window(themename="flatly")
+root = ttk.Window(themename="superhero")
 root.title("Кошко-вики")
 root.resizable(0, 0)
 root.configure(padx=20, pady=20)
@@ -97,7 +97,7 @@ for article in articles:
     listbox.insert('end', article)
 
 # Создание кнопки "Прочитать"
-read_button = ttk.Button(root, text="Прочитать", command=show_article)
+read_button = ttk.Button(root, text="Прочитать", style="info", command=show_article)
 read_button.grid(column=0, row=1)
 
 # Создание кнопки "Добавить статью"
@@ -105,7 +105,7 @@ add_button = ttk.Button(root, text="Добавить статью", command=add_
 add_button.grid(column=1, row=1)
 
 # Удаление
-delete_button = ttk.Button(root, text="Удалить статью", command=delete_article)
+delete_button = ttk.Button(root, text="Удалить статью", style="danger", command=delete_article)
 delete_button.grid(column=2, row=1)
 
 

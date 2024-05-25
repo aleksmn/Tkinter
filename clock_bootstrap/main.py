@@ -3,6 +3,9 @@ import ttkbootstrap as ttk
 from clock import ClockFrame
 from timer import TimerFrame
 
+# Запаковка в исполняемый файл
+# 1) pip install auto-py-to-exe
+# 2) auto-py-to-exe
 
 class App(ttk.Window):
     def __init__(self, **kwargs):
@@ -22,7 +25,7 @@ class App(ttk.Window):
         self.timer2.grid(row=2, column=0, pady=(20, 0))
 
 
-        # Icon Image
+        # Icon Image  iconarchive.com
         self.iconbitmap('icon.ico')
 
 if __name__ == "__main__":

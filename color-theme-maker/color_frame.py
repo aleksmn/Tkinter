@@ -23,23 +23,17 @@ class ColorFrame(ctk.CTkFrame):
 
         # RED
         self.red_label = ctk.CTkLabel(self, text="R")
-        self.red_slider = ctk.CTkSlider(self, from_=0, to=255, 
-                                        orientation='horizontal', 
-                                        command=lambda value: self.get_value(value, 'red'))
+        self.red_slider = ctk.CTkSlider(self, from_=0, to=255, command=lambda value: self.get_value(value, 'red'))
         self.red_slider.set(0)
 
         # GREEN
         self.green_label = ctk.CTkLabel(self, text="G")
-        self.green_slider = ctk.CTkSlider(self, from_=0, to=255, 
-                                          orientation='horizontal', 
-                                          command=lambda value: self.get_value(value, 'green'))
+        self.green_slider = ctk.CTkSlider(self, from_=0, to=255,  command=lambda value: self.get_value(value, 'green'))
         self.green_slider.set(0)
 
         # BLUE
         self.blue_label = ctk.CTkLabel(self, text="B")
-        self.blue_slider = ctk.CTkSlider(self, from_=0, to=255, 
-                                         orientation='horizontal', 
-                                         command=lambda value: self.get_value(value, 'blue'))
+        self.blue_slider = ctk.CTkSlider(self, from_=0, to=255, command=lambda value: self.get_value(value, 'blue'))
         self.blue_slider.set(0)
 
         # Размещаем все элементы:

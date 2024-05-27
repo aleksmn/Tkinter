@@ -56,13 +56,10 @@ class TimerFrame(ttk.Frame):
 
         while full_seconds > 0 and not self.stop_loop:
             
-            minutes = full_seconds // 60
+            hours = full_seconds // 3600
+            minutes = full_seconds % 3600 // 60
             seconds = full_seconds % 60
 
-            hours = minutes // 60
-            minutes = minutes % 60
-
-            
             self.time_label.configure(text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
 
             self.update()

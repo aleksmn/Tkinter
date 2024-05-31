@@ -27,8 +27,6 @@ class App(ctk.CTk):
         # Меню
 
         self.menu = tk.Menu(self)
-        self.menu.configure(bg='#221f1e', fg='white',
-                            border=0, font=('sans-serif', 9), activebackground='lightgrey')
         self.configure(menu=self.menu)
         self.menu.add_command(label='Сохранить', command=self.save_colors)
         self.menu.add_command(label='Вернуть цвета', command=self.load_colors)

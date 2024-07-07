@@ -9,7 +9,14 @@ number_of_symbols = 18
 
 # # # Functions
 def display_password(number_of_symbols):
-    """Выводим пароль на экран"""
+
+    # Получаем кол-во символов из поля для ввода
+    try:
+        number_of_symbols = int(text_output.get())
+    except:
+        pass
+
+    # Выводим пароль на экран
     text_output.delete(0, "end")
     text_output.insert(0, generate_password(number_of_symbols))
 

@@ -13,7 +13,6 @@ def show_article():
     selected_index = listbox.curselection()
     if selected_index:
         title = listbox.get(selected_index)
-        current_article = title
         article_text = articles[title]
         # print(title, article_text)
         # создаем окно для чтения статьи
@@ -23,7 +22,7 @@ def show_article():
         show_window.title(title)
 
         # Создание виджета Label для отображения названия статьи
-        title_label = ttk.Label(show_window, text="", font=("Helvetica", 14))
+        title_label = ttk.Label(show_window, text=title, font=("Helvetica", 14))
         title_label.grid(column=0, row=0)
 
         # Создание текстового виджета для отображения текста статьи

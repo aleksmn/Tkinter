@@ -84,9 +84,22 @@ def on_closing():
 
 
 
+def center_window(window):
+    window.update_idletasks()
+    width = window.winfo_width()
+    height = window.winfo_height()
+    screen_width = window.winfo_screenwidth()
+    screen_height = window.winfo_screenheight()
+    x = (screen_width - width) // 2
+    y = (screen_height - height) // 2
+    window.geometry(f"{width}x{height}+{x}+{y}")
+
+
 
 # Создание главного окна
 root = ttk.Window(themename="superhero")
+
+# root.geometry("+300+300")
 
 FONT = ("monospace", 10, "bold")
 
@@ -147,6 +160,9 @@ load_tasks()
 
 # Отслеживаем событие закрытие окна
 root.protocol("WM_DELETE_WINDOW", on_closing)
+
+
+center_window(root)
 
 # Запуск главного цикла событий
 root.mainloop()

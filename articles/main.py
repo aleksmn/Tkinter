@@ -75,7 +75,6 @@ def delete_article():
         title = listbox.get(selected_index)
         answer = messagebox.askyesno("Удаление", "Вы действительно хотите удалить эту статью?")
         if answer:
-            # go_back()
             del articles[title]
             listbox.delete(selected_index)
             file_connection.delete_article(title)

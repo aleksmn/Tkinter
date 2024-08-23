@@ -6,3 +6,6 @@ output/
 
 *.txt
 *.db
+password_manager/user_data.json
+password_manager/encryption_key.key
+password_manager/passwords.json

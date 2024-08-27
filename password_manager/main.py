@@ -5,7 +5,7 @@ from utils import *
 
 
 
-def register():
+def enter_register():
     login_frame.destroy()
 
     register_frame = ttk.Frame(master=root) 
@@ -28,13 +28,13 @@ def register():
     user_pass_2.grid(pady=(0,12)) 
     
 
-    register_button = ttk.Button(master=register_frame, text='Регистрация', style="secondary", command=create_user) 
+    register_button = ttk.Button(master=register_frame, text='Регистрация', style="secondary") 
     register_button.grid(pady=12, sticky="we") 
     
 
 
 
-def login():
+def enter_main():
     login_frame.destroy()
 
 
@@ -63,10 +63,10 @@ user_pass= ttk.Entry(master=login_frame, show="*")
 user_pass.grid(pady=(0,12)) 
   
 
-login_button = ttk.Button(master=login_frame, text='Вход', command=login) 
+login_button = ttk.Button(master=login_frame, text='Вход', command=enter_main) 
 login_button.grid(pady=12, sticky="we") 
 
-register_button = ttk.Button(master=login_frame, text='Регистрация', style="secondary", command=register) 
+register_button = ttk.Button(master=login_frame, text='Регистрация', style="secondary", command=enter_register) 
 register_button.grid(pady=12, sticky="we") 
   
 

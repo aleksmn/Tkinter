@@ -50,10 +50,10 @@ class ColorFrame(ctk.CTkFrame):
     def get_value(self, value, color):
         """Get current value for red and update color box"""
 
+        # print(value, color)
         value = hex(int(value))
-
         value = value.lstrip('0x')
-        value = value.rjust(2, "0")
+        value = value.zfill(2)
 
         if color == 'red':
             self.red_value = value

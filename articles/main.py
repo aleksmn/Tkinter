@@ -69,7 +69,7 @@ def add_article():
 
 # Функция для удаления статьи
 def delete_article():
-    global articles, listbox
+    global articles
     selected_index = listbox.curselection()
     if selected_index:
         title = listbox.get(selected_index)

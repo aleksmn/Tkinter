@@ -6,7 +6,6 @@ import file_connection
 # Содержимое статей (названия и текст статей)
 articles = file_connection.get_articles()
 
-# print(articles["Персидская кошка"])
 
 # =========================== Функции ==============================
 
@@ -15,11 +14,26 @@ def show_article():
     selected_index = listbox.curselection()
 
     if selected_index:
+        # название статьи
         title = listbox.get(selected_index)
+        # Текст статьи
         article_text = articles[title]
+        
+        # создаем окно для чтения статьи
+        show_window = ttk.Toplevel(root)
+        show_window.configure(padx=20, pady=20)
+        show_window.resizable(0,0)
+        show_window.title(title)
 
-        print(title, article_text)
+        # Создание виджета Label для отображения названия статьи
+        title_label = ttk.Label(show_window, text=title, font=("Helvetica", 14))
+        title_label.grid(column=0, row=0)
 
+        # Создание текстового виджета для отображения текста статьи
+        textbox = ttk.Text(show_window, wrap='word')
+        textbox.grid(column=0, row=1)
+        textbox.insert('end', article_text)
+        textbox.configure(state="disabled")
 
 
 

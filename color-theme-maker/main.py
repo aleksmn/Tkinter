@@ -2,6 +2,7 @@
 import tkinter as tk
 import customtkinter as ctk
 
+
 from color_frame import ColorFrame
 
 # Modes: "System" (standard), "Dark", "Light"
@@ -16,6 +17,9 @@ class App(ctk.CTk):
 
         self.configure(padx=10, pady=10)
         self.resizable(0, 0)
+
+        self.iconbitmap("icon.ico")
+        
 
         self.color_frames = []
 

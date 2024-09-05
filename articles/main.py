@@ -84,7 +84,7 @@ root = ttk.Window(themename="superhero")
 root.title("Кошко-вики")
 root.resizable(0, 0)
 root.configure(padx=20, pady=20)
-
+root.iconbitmap('icon.ico')
 
 # Создание списка статей
 listbox = Listbox(root)

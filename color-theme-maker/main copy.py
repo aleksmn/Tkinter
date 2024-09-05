@@ -24,6 +24,34 @@ class App(ctk.CTk):
             self.color_frames.append(cf)
 
 
+        # Меню
+        self.menu = tk.Menu(self)
+        self.configure(menu=self.menu)
+        self.menu.add_command(label='Сохранить', command=self.save_colors)
+        self.menu.add_command(label='Вернуть цвета', command=self.load_colors)
+
+
+    def save_colors(self):
+        
+        for cf in self.color_frames:
+            print(cf.get_color())
+
+
+        # Записываем в файл
+        with open('my_colors.txt', 'w', encoding='utf-8') as file:
+            for cf in self.color_frames:
+                file.write(cf.get_color() + '\n')
+
+
+    def load_colors(self):
+        with open('my_colors.txt', 'r', encoding='utf-8') as file:
+            data = file.read()
+            colors = data.split()
+            
+            i = 0
+            for cf in self.color_frames:
+                cf.set_color(colors[i])
+                i += 1
 
 
 

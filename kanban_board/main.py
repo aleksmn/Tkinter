@@ -12,7 +12,6 @@ import json
 def move_task(event, source_list, target_list=None):
 
     selected = source_list.curselection()
-    print(selected)
 
     if selected:
         # Получение выбранной задачи
@@ -36,7 +35,6 @@ def load_tasks():
         # получаем списки из json
         with open("tasks.json", "r", encoding="utf-8") as json_file:
             data = json.load(json_file)
-            print(data)
         # заполняем листбоксы
         # listbox.insert("end", "что вставить")
         for task in data["to_do"]:
@@ -78,7 +76,6 @@ def on_closing():
     # Выполняем сохранение списков
     save_tasks()
 
-    print("Выход из программы")
     # Выход из программы
     root.destroy()
 
@@ -99,9 +96,7 @@ def center_window(window):
 # Создание главного окна
 root = ttk.Window(themename="superhero")
 
-# root.geometry("+300+300")
-
-FONT = ("monospace", 10, "bold")
+FONT = ("Arial", 10, "bold")
 
 root.title("Kanban Board")
 root.resizable(0, 0)
@@ -125,9 +120,9 @@ done_list = tk.Listbox(root, height=10, width=30, font=FONT)
 
 
 # Расположение списков
-todo_list.grid(row=1, column=0, padx=20, pady=20)
-in_progress_list.grid(row=1, column=1, padx=(0, 20), pady=20)
-done_list.grid(row=1, column=2, padx=(0, 20), pady=20)
+todo_list.grid(row=1, column=0, padx=20, pady=(0,20))
+in_progress_list.grid(row=1, column=1, padx=(0, 20), pady=(0,20))
+done_list.grid(row=1, column=2, padx=(0, 20), pady=(0,20))
 
 
 # Создание виджетов интерфейса
@@ -148,10 +143,15 @@ entry.bind("<Return>", create_task)
 
 # Привязка событий перемещения задачи между списками
 todo_list.bind("<Double-Button-1>", lambda e: move_task(e, todo_list, in_progress_list))
+todo_list.bind("<Right>", lambda e: move_task(e, todo_list, in_progress_list))
 
 in_progress_list.bind("<Double-Button-1>", lambda e: move_task(e, in_progress_list, done_list))
+in_progress_list.bind("<Right>", lambda e: move_task(e, in_progress_list, done_list))
+in_progress_list.bind("<Left>", lambda e: move_task(e, in_progress_list, todo_list))
 
 done_list.bind("<Double-Button-1>", lambda e: move_task(e, done_list))
+done_list.bind("<Right>", lambda e: move_task(e, done_list))
+done_list.bind("<Left>", lambda e: move_task(e, done_list, in_progress_list))
 
 
 # Загружаем задачи из файла

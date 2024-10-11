@@ -29,5 +29,5 @@ class App(ttk.Window):
         self.iconbitmap('icon.ico')
 
 if __name__ == "__main__":
-    app = App(title="Best Timer", themename='vapor')
+    app = App(title="Best Timer", themename='superhero')
     app.mainloop()

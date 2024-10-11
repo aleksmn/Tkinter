@@ -45,7 +45,7 @@ class ColorFrame(ctk.CTkFrame):
 
         # переведем в шестнадцатеричную систему
         value = hex(int(value))
-        value = value.strip("0x")
+        value = value.lstrip("0x")
         # дополняем нулями до двух символов 
         value = value.rjust(2, "0")
 
@@ -94,6 +94,6 @@ if __name__ == "__main__":
     cf = ColorFrame(app)
     cf.grid(column=0, row=0)
 
-    cf.set_color("#333333")
+    cf.set_color("#7f0000")
     
     app.mainloop()

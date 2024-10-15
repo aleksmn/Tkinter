@@ -10,7 +10,7 @@ class ColorFrame(ctk.CTkFrame):
         self.selected_color = '#' + self.red_value + self.green_value + self.blue_value
 
         # Цветовой квадрат
-        self.color_box = ctk.CTkLabel(self, fg_color='black', text='', height=100, width=100)
+        self.color_box = ctk.CTkLabel(self, fg_color=self.selected_color, text='', height=100, width=100)
         self.color_box.grid(row=0, column=0, columnspan=2, padx=35, pady=10)
 
         # Вывод кода цвета

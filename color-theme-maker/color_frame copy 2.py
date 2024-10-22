@@ -23,15 +23,53 @@ class ColorFrame(ctk.CTkFrame):
         # Слайдеры
         # слайдер для красного цвета
         self.red_label = ctk.CTkLabel(self, text="R")
-        self.red_slider = ctk.CTkSlider(self, from_=0, to=255)
+        self.red_slider = ctk.CTkSlider(self, from_=0, to=255, command=lambda value: self.get_value(value, "red"))
 
         self.red_label.grid(row=2, column=0, padx=(5, 0))
         self.red_slider.grid(row=2, column=1, padx=5)
+        self.red_slider.set(0)
 
         # слайдер для зеленого цвета
-
+        self.green_label = ctk.CTkLabel(self, text="G")
+        self.green_slider = ctk.CTkSlider(self, from_=0, to=255, command=lambda value: self.get_value(value, "green"))
+        self.green_label.grid(row=3, column=0, padx=(5, 0))
+        self.green_slider.grid(row=3, column=1, padx=5)
+        self.green_slider.set(0)
 
         # слайдер для синего цвета
+        self.blue_label = ctk.CTkLabel(self, text="B")
+        self.blue_slider = ctk.CTkSlider(self, from_=0, to=255, command=lambda value: self.get_value(value, "blue"))
+        self.blue_label.grid(row=4, column=0, padx=(5, 0))
+        self.blue_slider.grid(row=4, column=1, padx=5)
+        self.blue_slider.set(0)
+
+
+    def get_value(self, value, color):
+
+        # переведем в шестнадцатеричную систему
+        value = hex(int(value))
+        value = value.lstrip("0x")
+        value = value.rjust(2, "0")
+
+        if color == "red":
+            self.red_value = value
+        if color == "green":
+            self.green_value = value
+        if color == "blue":
+            self.blue_value = value
+
+        self.update_color()
+
+
+    def update_color(self):
+        # Выбранный цвет
+        self.selected_color = '#' + self.red_value + self.green_value + self.blue_value
+        
+        print(self.selected_color)
+        # подставить цвет в окне программы
+
+
+
 
 
 

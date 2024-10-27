@@ -67,9 +67,28 @@ class ColorFrame(ctk.CTkFrame):
         
         print(self.selected_color)
         # подставить цвет в окне программы
+        self.color_box.configure(fg_color=self.selected_color)
 
+        self.color_hex.delete(0, "end")
+        self.color_hex.insert("end", self.selected_color)
+        
 
+    def get_color(self):
+        # возвращаем выбранный цвет
+        return self.selected_color
+    
 
+    def set_color(self, color):
+
+        self.red_value = color[1:3]
+        self.green_value = color[3:5]
+        self.blue_value = color[5:7]
+
+        self.red_slider.set(int(self.red_value, 16))
+        self.green_slider.set(int(self.green_value, 16))
+        self.blue_slider.set(int(self.blue_value, 16))
+
+        self.update_color()
 
 
 
@@ -80,5 +99,7 @@ if __name__ == "__main__":
     
     cf = ColorFrame(app)
     cf.grid(column=0, row=0)
+
+    cf.set_color("#00FFFF")
 
     app.mainloop()

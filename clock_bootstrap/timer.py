@@ -1,20 +1,25 @@
 import ttkbootstrap as ttk
-import threading
-import time
 from playsound import playsound
 
 #  pip install playsound==1.2.2
 
-# Создаем класс для таймера
+# mixkit.com
+# alarm
+
+# Создадим класс для таймера
 class TimerFrame(ttk.Frame):
     def __init__(self, container):
+        # конструктор родительского класса
         super().__init__(container)
 
-        # Виджеты
+        self.time_left = 0
+        self.stop_loop = True
+
+        # Ввод времени
         self.time_entry = ttk.Entry(self)
         self.time_entry.grid(row=0, column=0, padx=10, pady=10)
 
-        self.start_button = ttk.Button(self, text="Start", bootstyle="info", command=self.start_thread)
+        self.start_button = ttk.Button(self, text="Start", style="info", command=self.start)
         self.start_button.grid(row=0, column=1, padx=(0, 10))
 
         self.stop_button = ttk.Button(self, text="Stop", bootstyle="danger", command=self.stop)
@@ -23,14 +28,9 @@ class TimerFrame(ttk.Frame):
         self.time_label = ttk.Label(self, text="00:00:00", font=('monospace', 18))
         self.time_label.grid(column=0, row=1)
 
-        self.stop_loop = False
-
-
-    def start_thread(self):
-        t = threading.Thread(target=self.start)
-        t.start()
 
     def start(self):
+
         self.stop_loop = False
         hours, minutes, seconds = 0, 0, 0
         time_string = self.time_entry.get().split(":")
@@ -46,32 +46,44 @@ class TimerFrame(ttk.Frame):
 
         elif len(time_string) == 1:
             seconds = int(time_string[0])
-            
         else:
             print("Неверный формат ввода")
             return
+        
+        # вычислим, сколько всего секунд
+        self.time_left = hours * 3600 + minutes * 60 + seconds
 
-        # Получаем общее кол-во секунд
-        full_seconds = hours * 3600 + minutes * 60 + seconds
+        self.update_timer()
 
-        while full_seconds > 0 and not self.stop_loop:
+    
+    def update_timer(self):
+
+
+
+
+        if self.time_left >= 0 and not self.stop_loop:
             
-            hours = full_seconds // 3600
-            minutes = full_seconds % 3600 // 60
-            seconds = full_seconds % 60
 
+            # Получим часы, минуты и секунды
+            hours = self.time_left // 3600
+            minutes = self.time_left % 3600 // 60
+            seconds = self.time_left % 60
+
+            # Вывод времени
             self.time_label.configure(text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
 
-            self.update()
-            time.sleep(1)
-            
-            full_seconds -= 1
-            
-            
-        if not self.stop_loop:
+            # Ждем 1 секунду
+            self.after(1000, self.update_timer)
+
+            self.time_left -= 1
+ 
+        elif not self.stop_loop:
             self.time_label.configure(text="00:00:00")
-            self.update()
             playsound("alarm.wav")
+
+
+
+            
 
 
     def stop(self):
@@ -79,19 +91,20 @@ class TimerFrame(ttk.Frame):
         self.time_label.configure(text="00:00:00")
 
 
+    
 
 class App(ttk.Window):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
         self.resizable(0, 0)
-        
+
         self.timer = TimerFrame(self)
-        self.timer.grid(column=0, row=0)
+        self.timer.grid(row=0, column=0)
 
 
 
 # Запуск программы
 if __name__ == "__main__":
-    app = App(title="My Timer", themename='minty', minsize=(100, 0))
+    app = App()
     app.mainloop()

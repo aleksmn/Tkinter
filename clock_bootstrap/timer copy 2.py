@@ -1,5 +1,10 @@
 import ttkbootstrap as ttk
+from playsound import playsound
 
+#  pip install playsound==1.2.2
+
+# mixkit.com
+# alarm
 
 # Создадим класс для таймера
 class TimerFrame(ttk.Frame):
@@ -53,14 +58,32 @@ class TimerFrame(ttk.Frame):
     
     def update_timer(self):
 
-        if self.time_left > 0 and not self.stop_loop:
-            self.time_left -= 1
+
+
+
+        if self.time_left >= 0 and not self.stop_loop:
+            
+
+            # Получим часы, минуты и секунды
+            hours = self.time_left // 3600
+            minutes = self.time_left % 3600 // 60
+            seconds = self.time_left % 60
 
             # Вывод времени
-            self.time_label.configure(text=self.time_left)
+            self.time_label.configure(text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
 
             # Ждем 1 секунду
             self.after(1000, self.update_timer)
+
+            self.time_left -= 1
+ 
+        elif not self.stop_loop:
+            self.time_label.configure(text="00:00:00")
+            playsound("alarm.wav")
+
+
+
+            
 
 
     def stop(self):

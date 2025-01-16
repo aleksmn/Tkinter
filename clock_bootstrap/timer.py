@@ -58,9 +58,6 @@ class TimerFrame(ttk.Frame):
     
     def update_timer(self):
 
-
-
-
         if self.time_left >= 0 and not self.stop_loop:
             
 
@@ -81,9 +78,6 @@ class TimerFrame(ttk.Frame):
             self.time_label.configure(text="00:00:00")
             playsound("alarm.wav")
 
-
-
-            
 
 
     def stop(self):

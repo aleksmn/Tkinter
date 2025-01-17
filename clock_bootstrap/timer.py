@@ -58,9 +58,13 @@ class TimerFrame(ttk.Frame):
     
     def update_timer(self):
 
-        if self.time_left >= 0 and not self.stop_loop:
-            
+        if self.time_left == 0 and not self.stop_loop:
+            self.time_label.configure(text="00:00:00")
+            self.update()
+            playsound("alarm.wav")
 
+
+        elif self.time_left >= 0 and not self.stop_loop:
             # Получим часы, минуты и секунды
             hours = self.time_left // 3600
             minutes = self.time_left % 3600 // 60
@@ -74,10 +78,6 @@ class TimerFrame(ttk.Frame):
 
             self.time_left -= 1
  
-        elif not self.stop_loop:
-            self.time_label.configure(text="00:00:00")
-            playsound("alarm.wav")
-
 
 
     def stop(self):

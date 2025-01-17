@@ -30,6 +30,10 @@ class TimerFrame(ttk.Frame):
 
 
     def start(self):
+        # если таймер уже запушен, то выходим из функции 
+        if not self.stop_loop:
+            return
+
 
         self.stop_loop = False
         hours, minutes, seconds = 0, 0, 0
@@ -59,9 +63,11 @@ class TimerFrame(ttk.Frame):
     def update_timer(self):
 
         if self.time_left == 0 and not self.stop_loop:
+            self.stop_loop = True
             self.time_label.configure(text="00:00:00")
             self.update()
             playsound("alarm.wav")
+            
 
 
         elif self.time_left >= 0 and not self.stop_loop:

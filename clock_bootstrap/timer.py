@@ -33,7 +33,7 @@ class TimerFrame(ttk.Frame):
         self.time_entry.bind("<Return>", self.start)
 
 
-    def start(self, event):
+    def start(self, event=None):
         # если таймер уже запушен, то выходим из функции 
         if not self.stop_loop:
             return

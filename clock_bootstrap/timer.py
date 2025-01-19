@@ -32,6 +32,8 @@ class TimerFrame(ttk.Frame):
         self.time_label.grid(column=0, row=1)
 
         self.time_entry.bind("<Return>", self.start)
+        
+        self.stop_button.configure(state='disabled')
 
 
     def start(self, event=None):
@@ -41,6 +43,7 @@ class TimerFrame(ttk.Frame):
 
 
         self.start_button.configure(state='disabled')
+        self.stop_button.configure(state='active')
 
         self.running = True
         hours, minutes, seconds = 0, 0, 0
@@ -98,6 +101,7 @@ class TimerFrame(ttk.Frame):
             return
         self.running = False
         self.start_button.configure(state='active')
+        self.stop_button.configure(state='disabled')
         self.time_label.configure(text="00:00:00")
         self.update()
         time.sleep(1)

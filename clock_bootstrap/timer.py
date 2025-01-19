@@ -75,6 +75,8 @@ class TimerFrame(ttk.Frame):
         if self.time_left == 0:
             self.stop_loop = True
             self.time_label.configure(text="00:00:00")
+            self.start_button.configure(state='active')
+            self.stop_button.configure(state='disabled')
             self.update()
             playsound("alarm.wav")
             

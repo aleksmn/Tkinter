@@ -8,7 +8,7 @@ from playsound import playsound
 
 # Создадим класс для таймера
 class TimerFrame(ttk.Frame):
-    def __init__(self, container):
+    def __init__(self, container, start_time="00:05:00"):
         # конструктор родительского класса
         super().__init__(container)
 
@@ -18,6 +18,8 @@ class TimerFrame(ttk.Frame):
         # Ввод времени
         self.time_entry = ttk.Entry(self)
         self.time_entry.grid(row=0, column=0, padx=10, pady=10)
+
+        self.time_entry.insert(0, start_time)
 
         self.start_button = ttk.Button(self, text="Start", style="info", command=self.start)
         self.start_button.grid(row=0, column=1, padx=(0, 10))
@@ -70,7 +72,7 @@ class TimerFrame(ttk.Frame):
             
 
 
-        elif self.time_left >= 0 and not self.stop_loop:
+        elif self.time_left > 0 and not self.stop_loop:
             # Получим часы, минуты и секунды
             hours = self.time_left // 3600
             minutes = self.time_left % 3600 // 60

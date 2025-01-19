@@ -1,5 +1,6 @@
 import ttkbootstrap as ttk
 from playsound import playsound
+import time
 
 #  pip install playsound==1.2.2
 
@@ -13,7 +14,7 @@ class TimerFrame(ttk.Frame):
         super().__init__(container)
 
         self.time_left = 0
-        self.stop_loop = True
+        self.running = False
 
         # Ввод времени
         self.time_entry = ttk.Entry(self, font=('sans', 12), width=14)
@@ -35,11 +36,13 @@ class TimerFrame(ttk.Frame):
 
     def start(self, event=None):
         # если таймер уже запушен, то выходим из функции 
-        if not self.stop_loop:
+        if self.running:
             return
 
 
-        self.stop_loop = False
+        self.start_button.configure(state='disabled')
+
+        self.running = True
         hours, minutes, seconds = 0, 0, 0
         time_string = self.time_entry.get().split(":")
 
@@ -66,7 +69,7 @@ class TimerFrame(ttk.Frame):
     
     def update_timer(self):
 
-        if self.time_left == 0 and not self.stop_loop:
+        if self.time_left == 0:
             self.stop_loop = True
             self.time_label.configure(text="00:00:00")
             self.update()
@@ -74,7 +77,7 @@ class TimerFrame(ttk.Frame):
             
 
 
-        elif self.time_left > 0 and not self.stop_loop:
+        elif self.time_left > 0 and self.running:
             # Получим часы, минуты и секунды
             hours = self.time_left // 3600
             minutes = self.time_left % 3600 // 60
@@ -91,8 +94,16 @@ class TimerFrame(ttk.Frame):
 
 
     def stop(self):
-        self.stop_loop = True
+        if not self.running:
+            return
+        self.running = False
+        self.start_button.configure(state='active')
         self.time_label.configure(text="00:00:00")
+        self.update()
+        time.sleep(1)
+        
+        
+
 
 
     

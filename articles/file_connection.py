@@ -18,7 +18,7 @@ def save_article(name, text):
     articles[name] = text
     # Переписываем файл. w -  write - открыть файл для записи
     with open("articles.json", "w", encoding='utf-8') as json_file:
-        json.dump(articles, json_file, ensure_ascii=False)
+        json.dump(articles, json_file, ensure_ascii=False, indent=4)
 
 
 
@@ -29,7 +29,7 @@ def delete_article(name):
     del articles[name]
     # Переписываем файл. w -  write - открыть файл для записи
     with open("articles.json", "w", encoding='utf-8') as json_file:
-        json.dump(articles, json_file, ensure_ascii=False)
+        json.dump(articles, json_file, ensure_ascii=False, indent=4)
 
 
 

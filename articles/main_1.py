@@ -30,18 +30,6 @@ def show_article():
         textbox.configure(state="disabled")
 
 
-# Функция для добавления новой статьи
-def add_article():
-    global articles
-    add_window = ttk.Toplevel(root)
-    add_window.title("Добавить статью")
-    add_window.configure(padx=20, pady=20)
-
-    label_title = ttk.Label(add_window, text="Введите название статьи:")
-    label_title.grid()
-
-    entry_title = ttk.Entry(add_window)
-    entry_title.grid(sticky="we")
 
 # Создание окна
 root = ttk.Window(themename="superhero")
@@ -59,7 +47,7 @@ for article in articles:
     listbox.insert('end', article)
 
 # Создание кнопки "Прочитать"
-read_button = ttk.Button(root, text="Прочитать", style="info")
+read_button = ttk.Button(root, text="Прочитать", style="info", command=show_article)
 read_button.grid(column=0, row=1)
 
 # Создание кнопки "Добавить статью"

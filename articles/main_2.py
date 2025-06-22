@@ -34,14 +34,13 @@ def add_article():
     global articles
 
     def save_new_article():
-        # получим название и текст статьи
         new_title = entry_title.get()
-        new_text = text.get("1.0", "end")
-        # print(new_title, new_text)
+        new_text = text.get("1.0", 'end')
         if new_title and new_text:
+            # Сохраняем статью в файл
+            file_connection.save_article(new_title, new_text)
             articles[new_title] = new_text
             listbox.insert("end", new_title)
-            file_connection.save_article(new_title, new_text)
             add_window.destroy()
 
     add_window = ttk.Toplevel(root)

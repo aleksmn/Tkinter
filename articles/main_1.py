@@ -12,7 +12,7 @@ def show_article():
     if selected_index:
         title = listbox.get(selected_index)
         article_text = articles[title]
-        
+
         # создаем окно для чтения статьи
         show_window = ttk.Toplevel(root)
         show_window.configure(padx=20, pady=20)
@@ -28,6 +28,7 @@ def show_article():
         textbox.grid(column=0, row=1)
         textbox.insert('end', article_text)
         textbox.configure(state="disabled")
+
 
 
 

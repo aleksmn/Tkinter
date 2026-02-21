@@ -18,12 +18,8 @@ class App(ttk.Window):
         self.clock = ClockFrame(self)
         self.clock.grid(row=0, column=0)
 
-        self.timer = TimerFrame(self, "00:45:00")
+        self.timer = TimerFrame(self)
         self.timer.grid(row=1, column=0, pady=(20, 0))
-
-        self.timer2 = TimerFrame(self, "00:05:00")
-        self.timer2.grid(row=2, column=0, pady=(20, 0))
-
 
         # Icon Image  iconarchive.com
         self.iconbitmap('icon.ico')

@@ -23,7 +23,7 @@ class TimerFrame(ttk.Frame):
         self.start_button = ttk.Button(self, text="Start", style="info", command=self.start)
         self.start_button.grid(row=0, column=1, padx=(0, 10))
 
-        self.stop_button = ttk.Button(self, text="Stop", bootstyle="danger", command=self.stop)
+        self.stop_button = ttk.Button(self, text="Stop", style="danger", command=self.stop)
         self.stop_button.grid(row=1, column=1, padx=(0, 10), pady=(0, 10))
 
         self.time_label = ttk.Label(self, text="00:00:00", font=('monospace', 18))
@@ -90,8 +90,6 @@ class TimerFrame(ttk.Frame):
         if not self.running:
             return
         self.running = False
-        self.start_button.configure(state='active')
-        self.stop_button.configure(state='disabled')
         self.time_label.configure(text="00:00:00")
         self.update()
         time.sleep(1)

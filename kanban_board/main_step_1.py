@@ -3,6 +3,7 @@ import ttkbootstrap as ttk
 
 # Функции
 
+
 def move_task(event, source_list, target_list=None):
 
     selected = source_list.curselection()
@@ -36,13 +37,14 @@ root.resizable(0, 0)
 
 # Подписи для колонок
 todo_label = ttk.Label(root, text="To Do", style="warning", font=FONT)
-in_progress_label = ttk.Label(root, text="In Progress", style='primary', font=FONT)
+in_progress_label = ttk.Label(
+    root, text="In Progress", style='primary', font=FONT)
 done_label = ttk.Label(root, text="Done", style="info", font=FONT)
 
 # Расположение подписей
-todo_label.grid(row=0, column=0, pady=(20,0))
-in_progress_label.grid(row=0, column=1, pady=(20,0))
-done_label.grid(row=0, column=2, pady=(20,0))
+todo_label.grid(row=0, column=0, pady=(20, 0))
+in_progress_label.grid(row=0, column=1, pady=(20, 0))
+done_label.grid(row=0, column=2, pady=(20, 0))
 
 
 # Создание списков задач
@@ -59,13 +61,13 @@ done_list.grid(row=1, column=2, padx=(0, 20), pady=20)
 
 # Создание виджетов интерфейса
 add_label = ttk.Label(root, text="Add Task:", font=FONT)
-add_label.grid(row=2, column=0, pady=(0,20), padx=(0, 20), sticky='e')
+add_label.grid(row=2, column=0, pady=(0, 20), padx=(0, 20), sticky='e')
 
 entry = ttk.Entry(root, width=30)
-entry.grid(row=2, column=1, pady=(0,20), padx=(0, 20), sticky="ew")
+entry.grid(row=2, column=1, pady=(0, 20), padx=(0, 20), sticky="ew")
 
 add_button = ttk.Button(root, text="Add", width=10)
-add_button.grid(row=2, column=2, pady=(0,20), sticky='w')
+add_button.grid(row=2, column=2, pady=(0, 20), sticky='w')
 
 
 # События
@@ -74,8 +76,10 @@ entry.bind("<Return>", create_task)
 
 
 # Привязка событий перемещения задачи между списками
-todo_list.bind("<<ListboxSelect>>", lambda e: move_task(e, todo_list, in_progress_list))
-in_progress_list.bind("<<ListboxSelect>>", lambda e: move_task(e, in_progress_list, done_list))
+todo_list.bind("<<ListboxSelect>>", lambda e: move_task(
+    e, todo_list, in_progress_list))
+in_progress_list.bind("<<ListboxSelect>>", lambda e: move_task(
+    e, in_progress_list, done_list))
 done_list.bind("<<ListboxSelect>>", lambda e: move_task(e, done_list))
 
 # Запуск главного цикла событий

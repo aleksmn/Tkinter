@@ -22,7 +22,8 @@ def show_article():
         show_window.title(title)
 
         # Создание виджета Label для отображения названия статьи
-        title_label = ttk.Label(show_window, text=title, font=("Helvetica", 14))
+        title_label = ttk.Label(show_window, text=title,
+                                font=("Helvetica", 14))
         title_label.grid(column=0, row=0)
 
         # Создание текстового виджета для отображения текста статьи
@@ -62,9 +63,9 @@ def add_article():
     text = ttk.Text(add_window, wrap='word')
     text.grid()
 
-    save_button = ttk.Button(add_window, text="Сохранить", command=save_new_article)
+    save_button = ttk.Button(
+        add_window, text="Сохранить", command=save_new_article)
     save_button.grid()
-
 
 
 # Функция для удаления статьи
@@ -73,11 +74,13 @@ def delete_article():
     selected_index = listbox.curselection()
     if selected_index:
         title = listbox.get(selected_index)
-        answer = messagebox.askyesno("Удаление", "Вы действительно хотите удалить эту статью?")
+        answer = messagebox.askyesno(
+            "Удаление", "Вы действительно хотите удалить эту статью?")
         if answer:
             del articles[title]
             listbox.delete(selected_index)
             file_connection.delete_article(title)
+
 
 # Создание окна
 root = ttk.Window(themename="superhero")
@@ -95,7 +98,8 @@ for article in articles:
     listbox.insert('end', article)
 
 # Создание кнопки "Прочитать"
-read_button = ttk.Button(root, text="Прочитать", style="info", command=show_article)
+read_button = ttk.Button(root, text="Прочитать",
+                         style="info", command=show_article)
 read_button.grid(column=0, row=1)
 
 # Создание кнопки "Добавить статью"
@@ -103,9 +107,9 @@ add_button = ttk.Button(root, text="Добавить статью", command=add_
 add_button.grid(column=1, row=1)
 
 # Удаление
-delete_button = ttk.Button(root, text="Удалить статью", style="danger", command=delete_article)
+delete_button = ttk.Button(root, text="Удалить статью",
+                           style="danger", command=delete_article)
 delete_button.grid(column=2, row=1)
-
 
 
 # Запуск приложения

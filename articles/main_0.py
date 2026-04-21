@@ -23,7 +23,8 @@ for article in articles:
     listbox.insert('end', article)
 
 # Создание кнопки "Прочитать"
-read_button = ttk.Button(root, text="Прочитать", style="info", command=show_article)
+read_button = ttk.Button(root, text="Прочитать",
+                         style="info", command=show_article)
 read_button.grid(column=0, row=1)
 
 # Создание кнопки "Добавить статью"
@@ -35,8 +36,5 @@ delete_button = ttk.Button(root, text="Удалить статью", style="dang
 delete_button.grid(column=2, row=1)
 
 
-
 # Запуск приложения
 root.mainloop()
-
-

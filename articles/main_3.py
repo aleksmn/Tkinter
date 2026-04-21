@@ -7,12 +7,14 @@ import file_connection
 articles = file_connection.get_articles()
 
 # Функция для отображения выбранной статьи
+
+
 def show_article():
     selected_index = listbox.curselection()
     if selected_index:
         title = listbox.get(selected_index)
         article_text = articles[title]
-        
+
         # создаем окно для чтения статьи
         show_window = ttk.Toplevel(root)
         show_window.configure(padx=20, pady=20)
@@ -20,7 +22,8 @@ def show_article():
         show_window.title(title)
 
         # Создание виджета Label для отображения названия статьи
-        title_label = ttk.Label(show_window, text=title, font=("Helvetica", 14))
+        title_label = ttk.Label(show_window, text=title,
+                                font=("Helvetica", 14))
         title_label.grid(column=0, row=0)
 
         # Создание текстового виджета для отображения текста статьи
@@ -30,6 +33,8 @@ def show_article():
         textbox.configure(state="disabled")
 
 # Функция для добавления новой статьи
+
+
 def add_article():
     global articles
 
@@ -58,7 +63,8 @@ def add_article():
     text = ttk.Text(add_window, wrap='word')
     text.grid()
 
-    save_button = ttk.Button(add_window, text="Сохранить", command=save_new_article)
+    save_button = ttk.Button(
+        add_window, text="Сохранить", command=save_new_article)
     save_button.grid()
 
 
@@ -68,13 +74,14 @@ def delete_article():
     selected_index = listbox.curselection()
     if selected_index:
         title = listbox.get(selected_index)
-        answer = messagebox.askyesno("Удаление", "Вы действительно хотите удалить эту статью?")
+        answer = messagebox.askyesno(
+            "Удаление", "Вы действительно хотите удалить эту статью?")
         if answer:
             del articles[title]
             listbox.delete(selected_index)
             file_connection.delete_article(title)
 
-            
+
 # Создание окна
 root = ttk.Window(themename="superhero")
 root.title("Кошко-вики")
@@ -91,7 +98,8 @@ for article in articles:
     listbox.insert('end', article)
 
 # Создание кнопки "Прочитать"
-read_button = ttk.Button(root, text="Прочитать", style="info", command=show_article)
+read_button = ttk.Button(root, text="Прочитать",
+                         style="info", command=show_article)
 read_button.grid(column=0, row=1)
 
 # Создание кнопки "Добавить статью"
@@ -103,8 +111,5 @@ delete_button = ttk.Button(root, text="Удалить статью", style="dang
 delete_button.grid(column=2, row=1)
 
 
-
 # Запуск приложения
 root.mainloop()
-
-

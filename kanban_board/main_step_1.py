@@ -74,13 +74,13 @@ add_button.grid(row=2, column=2, pady=(0, 20), sticky='w')
 add_button.bind("<Button-1>", create_task)
 entry.bind("<Return>", create_task)
 
-
 # Привязка событий перемещения задачи между списками
-todo_list.bind("<<ListboxSelect>>", lambda e: move_task(
-    e, todo_list, in_progress_list))
-in_progress_list.bind("<<ListboxSelect>>", lambda e: move_task(
-    e, in_progress_list, done_list))
-done_list.bind("<<ListboxSelect>>", lambda e: move_task(e, done_list))
+todo_list.bind("<Double-Button-1>",
+               lambda e: move_task(e, todo_list, in_progress_list))
+in_progress_list.bind("<Double-Button-1>",
+                      lambda e: move_task(e, in_progress_list, done_list))
+done_list.bind("<Double-Button-1>",
+               lambda e: move_task(e, done_list))
 
 # Запуск главного цикла событий
 root.mainloop()

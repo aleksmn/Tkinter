@@ -1,6 +1,7 @@
 import ttkbootstrap as ttk
 import time
 
+
 class ClockFrame(ttk.Frame):
     def __init__(self, container):
         super().__init__(container)
@@ -10,7 +11,8 @@ class ClockFrame(ttk.Frame):
         secondary_font = ('monospace', 40)
 
         # 1) time
-        self.time_label = ttk.Label(self, text="12:00", font=secondary_font, bootstyle="info")
+        self.time_label = ttk.Label(
+            self, text="12:00", font=secondary_font, bootstyle="info")
         self.time_label.grid(row=0, column=0, columnspan=2)
 
         # 2) day
@@ -22,7 +24,6 @@ class ClockFrame(ttk.Frame):
         self.date_label.grid(row=1, column=1)
 
         self.update()
-
 
     def update(self):
         time_string = time.strftime("%H:%M:%S")
@@ -37,19 +38,15 @@ class ClockFrame(ttk.Frame):
         self.after(1000, self.update)
 
 
-
-
 class App(ttk.Window):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        
+
         self.configure(padx=40, pady=20)
         self.resizable(0, 0)
 
         self.clock = ClockFrame(self)
         self.clock.grid(column=0, row=0)
-
-
 
 
 # Запуск программы

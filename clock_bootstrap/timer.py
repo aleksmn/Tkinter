@@ -8,6 +8,8 @@ import time
 # alarm
 
 # Создадим класс для таймера
+
+
 class TimerFrame(ttk.Frame):
     def __init__(self, container):
         # конструктор родительского класса
@@ -20,18 +22,20 @@ class TimerFrame(ttk.Frame):
         self.time_entry = ttk.Entry(self, font=('sans', 12), width=14)
         self.time_entry.grid(row=0, column=0, padx=10, pady=10)
 
-        self.start_button = ttk.Button(self, text="Start", style="info", command=self.start)
+        self.start_button = ttk.Button(
+            self, text="Start", style="info", command=self.start)
         self.start_button.grid(row=0, column=1, padx=(0, 10))
 
-        self.stop_button = ttk.Button(self, text="Stop", style="danger", command=self.stop)
+        self.stop_button = ttk.Button(
+            self, text="Stop", style="danger", command=self.stop)
         self.stop_button.grid(row=1, column=1, padx=(0, 10), pady=(0, 10))
 
-        self.time_label = ttk.Label(self, text="00:00:00", font=('monospace', 18))
+        self.time_label = ttk.Label(
+            self, text="00:00:00", font=('monospace', 18))
         self.time_label.grid(column=0, row=1)
 
-
     def start(self, event=None):
-        # если таймер уже запушен, то выходим из функции 
+        # если таймер уже запушен, то выходим из функции
         if self.running:
             return
 
@@ -53,13 +57,12 @@ class TimerFrame(ttk.Frame):
         else:
             print("Неверный формат ввода")
             return
-        
+
         # вычислим, сколько всего секунд
         self.time_left = hours * 3600 + minutes * 60 + seconds
 
         self.update_timer()
 
-    
     def update_timer(self):
 
         if self.time_left == 0:
@@ -67,8 +70,6 @@ class TimerFrame(ttk.Frame):
             self.time_label.configure(text="00:00:00")
             self.update()
             playsound("alarm.wav")
-            
-
 
         elif self.time_left > 0 and self.running:
             # Получим часы, минуты и секунды
@@ -77,14 +78,13 @@ class TimerFrame(ttk.Frame):
             seconds = self.time_left % 60
 
             # Вывод времени
-            self.time_label.configure(text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
+            self.time_label.configure(
+                text=f"{hours:02d}:{minutes:02d}:{seconds:02d}")
 
             # Ждем 1 секунду
             self.after(1000, self.update_timer)
 
             self.time_left -= 1
- 
-
 
     def stop(self):
         if not self.running:
@@ -93,12 +93,7 @@ class TimerFrame(ttk.Frame):
         self.time_label.configure(text="00:00:00")
         self.update()
         time.sleep(1)
-        
-        
 
-
-
-    
 
 class App(ttk.Window):
     def __init__(self, **kwargs):
@@ -108,7 +103,6 @@ class App(ttk.Window):
 
         self.timer = TimerFrame(self)
         self.timer.grid(row=0, column=0)
-
 
 
 # Запуск программы

@@ -4,7 +4,6 @@ from clock import ClockFrame
 from timer import TimerFrame
 
 
-
 class App(ttk.Window):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
